@@ -6,7 +6,7 @@ import Image4 from "../assets/products/product_5.png";
 import Image5 from "../assets/products/product_6.png";
 import Image6 from "../assets/products/product_7.png";
 import Image7 from "../assets/products/product_8.png";
-import Image8 from "../assets/products/product_8.png";
+
 import Image9 from "../assets/products/product_9.png";
 import Image10 from "../assets/products/product_10.png";
 import AddButton from "./AddButton";
@@ -59,24 +59,24 @@ function Products() {
     },
     {
       id: 7,
-      name: "Fleece Sweaters pul...",
+      name: "DECARSDZ MEN'S OXFORDS",
       price: 45,
       oldPrice: 70,
-      image: Image1,
+      image: Image4,
     },
     {
       id: 8,
-      name: "Basics duffel bag...",
+      name: "Sunglasses",
       price: 21,
       oldPrice: 24,
-      image: Image2,
+      image: Image5,
     },
     {
       id: 9,
-      name: "Men's Hoodie Cas...",
+      name: "Sweatshirt",
       price: 45,
       oldPrice: 70,
-      image: Image3,
+      image: Image10,
     },
   ];
 
@@ -88,7 +88,7 @@ function Products() {
             <img src={product.image} alt={product.name} />
             <div className="bottom row">
               <div className="info col-7">
-                <h6 className="">{product.name}</h6>
+                <h6 className="product-name">{product.name}</h6>
                 <h6 className="price">
                   ${product.price} <s>${product.oldPrice}</s>
                 </h6>
@@ -105,7 +105,7 @@ function Products() {
             <img src={product.image} alt={product.name} />
             <div className="bottom row">
               <div className="info col-7">
-                <h6 className="">{product.name}</h6>
+                <h6 className="product-name">{product.name}</h6>
                 <h6 className="price">
                   ${product.price} <s>${product.oldPrice}</s>
                 </h6>
@@ -122,7 +122,7 @@ function Products() {
             <img src={product.image} alt={product.name} />
             <div className="bottom row">
               <div className="info col-7">
-                <h6 className="">{product.name}</h6>
+                <h6 className="product-name">{product.name}</h6>
                 <h6 className="price">
                   ${product.price} <s>${product.oldPrice}</s>
                 </h6>

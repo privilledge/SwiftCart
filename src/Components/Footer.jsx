@@ -29,10 +29,29 @@ function Footer() {
                   </div>
                   <div className="col-6">
                     <h5>Quick Links</h5>
-                    <p>Shop</p>
-                    <p>Login</p>
-                    <p>Cart</p>
-                    <p>Search</p>
+                    <p>
+                      <a style={{ color: "black" }} href="/shop">
+                        Shop
+                      </a>
+                    </p>
+                    <p>
+                      {" "}
+                      <a style={{ color: "black" }} href="">
+                        Login
+                      </a>
+                    </p>
+                    <p>
+                      {" "}
+                      <a style={{ color: "black" }} href="/cart">
+                        Cart
+                      </a>
+                    </p>
+                    <p>
+                      {" "}
+                      <a style={{ color: "black" }} href="">
+                        Search
+                      </a>
+                    </p>
                   </div>
                 </div>
               </div>

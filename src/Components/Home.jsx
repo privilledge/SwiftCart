@@ -17,11 +17,18 @@ import AddButton from "./AddButton";
 import { useNavigate } from "react-router-dom";
 
 import { useCart } from "./CartContext";
+import RemoveButton from "./RemoveButton";
 function Home() {
   const navigate = useNavigate();
+  const removeFromCart = () => {
+    alert("working");
+  };
   const { addToCart } = useCart();
   const clickShopButton = () => {
     navigate("/Shop");
+  };
+  const singleProduct = () => {
+    navigate("/SingleProduct");
   };
 
   const products = [
@@ -69,24 +76,24 @@ function Home() {
     },
     {
       id: 7,
-      name: "Fleece Sweaters pul...",
+      name: "Sunglasses",
       price: 45,
       oldPrice: 70,
-      image: Image1,
+      image: Image5,
     },
     {
       id: 8,
-      name: "Basics duffel bag...",
+      name: "Sweatshirt",
       price: 21,
       oldPrice: 24,
-      image: Image2,
+      image: Image10,
     },
     {
       id: 9,
-      name: "Men's Hoodie Cas...",
+      name: "Women's wallet",
       price: 45,
       oldPrice: 70,
-      image: Image3,
+      image: Image8,
     },
   ];
 
@@ -129,13 +136,15 @@ function Home() {
                   <img src={product.image} alt={product.name} />
                   <div className="bottom row">
                     <div className="info col-7">
-                      <h6 className="">{product.name}</h6>
+                      <h6 className="product-name" onClick={singleProduct}>
+                        {product.name}
+                      </h6>
                       <h6 className="price">
                         ${product.price} <s>${product.oldPrice}</s>
                       </h6>
                     </div>
-
                     <AddButton onClick={() => addToCart(product)} />
+                    {/* <RemoveButton onClick={removeFromCart} /> */}
                   </div>
                 </div>
               ))}
@@ -151,7 +160,7 @@ function Home() {
                   <img src={product.image} alt={product.name} />
                   <div className="bottom row">
                     <div className="info col-7">
-                      <h6 className="">{product.name}</h6>
+                      <h6 className="product-name">{product.name}</h6>
                       <h6 className="price">
                         ${product.price} <s>${product.oldPrice}</s>
                       </h6>
@@ -181,7 +190,7 @@ function Home() {
               <div className="col-lg-6 box">
                 <div className="row offers" key={exclusive.id}>
                   <div className="info col-lg-7 col-md-12 col-sm-12">
-                    <h6 className="fw-bold">{exclusive.name}</h6>
+                    <h6 className="fw-bold product-name">{exclusive.name}</h6>
                     <h6 className="fw-bold">
                       ${exclusive.price} <s>${exclusive.oldPrice}</s>
                     </h6>
@@ -217,7 +226,7 @@ function Home() {
                   <img src={product.image} alt={product.name} />
                   <div className="bottom row">
                     <div className="info col-7">
-                      <h6 className="">{product.name}</h6>
+                      <h6 className="product-name">{product.name}</h6>
                       <h6 className="price">
                         ${product.price} <s>${product.oldPrice}</s>
                       </h6>
@@ -238,7 +247,7 @@ function Home() {
                   <img src={product.image} alt={product.name} />
                   <div className="bottom row">
                     <div className="info col-7">
-                      <h6 className="">{product.name}</h6>
+                      <h6 className="product-name">{product.name}</h6>
                       <h6 className="price">
                         ${product.price} <s>${product.oldPrice}</s>
                       </h6>
@@ -258,7 +267,7 @@ function Home() {
                   <img src={product.image} alt={product.name} />
                   <div className="bottom row">
                     <div className="info col-7">
-                      <h6 className="">{product.name}</h6>
+                      <h6 className="product-name">{product.name}</h6>
                       <h6 className="price">
                         ${product.price} <s>${product.oldPrice}</s>
                       </h6>

@@ -1,13 +1,24 @@
+// src/components/Cart.jsx
 import Header from "./Header";
-import React, { useState } from "react";
+import React from "react";
 import { useCart } from "./CartContext";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
-import Image from "../assets/products/product_2.png";
-import Image1 from "../assets/products/product_3.png";
-import Image2 from "../assets/products/product_4.png";
-
+import { Row, Col, Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 function Cart() {
-  const { cartItems } = useCart();
+  const { cartItems, updateItemQuantity } = useCart();
+  const navigate = useNavigate();
+  const handleIncrease = (item) => {
+    updateItemQuantity(item.id, item.quantity + 1);
+  };
+
+  const handleDecrease = (item) => {
+    if (item.quantity > 1) {
+      updateItemQuantity(item.id, item.quantity - 1);
+    }
+  };
+  const checkout = () => {
+    navigate("/Checkout");
+  };
 
   return (
     <>
@@ -21,30 +32,20 @@ function Cart() {
                 <h2>Shopping Cart</h2>
               </Col>
               <Col md={4}>
-                <h5 className="items-count">Items : 1</h5>
+                <h5 className="items-count">Items: {cartItems.length}</h5>
               </Col>
             </Row>
             <hr />
             {cartItems.length === 0 ? (
               <p>Your cart is empty.</p>
             ) : (
-              // {cartItems.map(item => (
-              //   <div key={item.id} className="cart-item">
-              //     <img src={item.image} alt={item.name} />
-              //     <div>
-              //       <h4>{item.name}</h4>
-              //       <p>${item.price} x {item.quantity}</p>
-              //     </div>
-              //   </div>
-              // ))}
-
               <Row>
                 {cartItems.map((item) => (
-                  <Row>
+                  <Row key={item.id}>
                     <Col md={3}>
                       <img
                         src={item.image}
-                        alt="item name"
+                        alt={item.name}
                         className="img-fluid cart-img"
                       />
                     </Col>
@@ -53,16 +54,24 @@ function Cart() {
                       <span>${item.price}</span>
                     </Col>
                     <Col md={3} className="item-quantity">
-                      <Button variant="outline-secondary" size="sm" onClick="">
+                      <Button
+                        variant="outline-secondary"
+                        size="sm"
+                        onClick={() => handleDecrease(item)}
+                      >
                         -
                       </Button>
                       <span className="mx-2">{item.quantity}</span>
-                      <Button variant="outline-secondary" size="sm" onClick="">
+                      <Button
+                        variant="outline-secondary"
+                        size="sm"
+                        onClick={() => handleIncrease(item)}
+                      >
                         +
                       </Button>
                     </Col>
                     <Col md={3} className="remove-item">
-                      <Button variant="danger" size="sm" onClick="">
+                      <Button variant="danger" size="sm">
                         <svg
                           stroke="currentColor"
                           fill="currentColor"
@@ -76,7 +85,7 @@ function Cart() {
                         </svg>
                       </Button>
                     </Col>
-                    <hr />{" "}
+                    <hr />
                   </Row>
                 ))}
               </Row>
@@ -93,10 +102,16 @@ function Cart() {
               <hr />
               <Row>
                 <Col md={6}>
-                  <h6>Items: 1</h6>
+                  <h6>Items: {cartItems.length}</h6>
                 </Col>
                 <Col md={6}>
-                  <h6>$37</h6>
+                  <h6>
+                    $
+                    {cartItems.reduce(
+                      (total, item) => total + item.price * item.quantity,
+                      0
+                    )}
+                  </h6>
                 </Col>
               </Row>
               <p>SHIPPING Standard-Delivery - € 5.00</p>
@@ -106,7 +121,7 @@ function Cart() {
               </Form.Group>
               <br />
 
-              <Button className="checkout" variant="dark">
+              <Button className="checkout" variant="dark" onClick={checkout}>
                 CHECKOUT
               </Button>
             </Col>
@@ -116,4 +131,5 @@ function Cart() {
     </>
   );
 }
+
 export default Cart;

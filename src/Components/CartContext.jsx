@@ -24,9 +24,18 @@ export function CartProvider({ children }) {
     });
   };
 
+  const updateItemQuantity = (productId, quantity) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === productId ? { ...item, quantity } : item
+      )
+    );
+  };
+
   const value = {
     cartItems,
     addToCart,
+    updateItemQuantity,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

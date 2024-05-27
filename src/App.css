@@ -86,9 +86,20 @@ s {
 .button > .btn {
   opacity: 0;
 }
+.button > .cart-button {
+  opacity: 0;
+}
+.box:hover .button > .cart-button {
+  opacity: 1;
+}
 .box:hover .button > .btn {
   opacity: 1;
 }
+.box:hover .product-name {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .box:hover img {
   transform: scale(1.1);
 }
@@ -282,7 +293,8 @@ p {
 }
 
 .shop-container {
-  box-shadow: 2px 2px 2px 5px rgba(0, 0, 0, 0.1);
+  border: #ede8e8 solid 1px;
+
   padding: 3%;
 }
 
@@ -389,4 +401,100 @@ p {
   .cart-items-details {
     border-right: none;
   }
+}
+.remove-item-button {
+  background-color: #c80000 !important;
+  color: #fff;
+}
+.single-product-container {
+  margin-top: 1%;
+}
+.image-container {
+  text-align: center;
+}
+.image-container img {
+  width: 69%;
+}
+.product-summary {
+  margin-top: 12% !important;
+}
+.add-cart {
+  background-color: #22e2b4;
+  color: #fff;
+  font-weight: 500;
+  border: #22e2b4 solid 2px;
+  padding-left: 1.8em;
+  padding-right: 1.8em;
+}
+.back-button {
+  background-color: #696868;
+  color: #fff;
+  border: #696868 solid 2px;
+  font-weight: 500;
+  padding-left: 1.8em;
+  padding-right: 1.8em;
+}
+.billing-orders,
+.order-summary {
+  border: #959595 solid 1px;
+  border-top: solid 2px #22e2b4 !important;
+  padding: 1%;
+  font-size: 14px;
+}
+.select-country {
+  width: 100%;
+  height: 3em;
+  border-radius: 0%;
+  border: #959595 solid 1px;
+  padding: 2%;
+}
+.select-country:focus {
+  border: #959595 solid 1px;
+}
+.billing-input,
+.col-input {
+  width: 100% !important;
+  height: 3em;
+  border-radius: 0%;
+  border: #959595 1px solid;
+  padding: 2%;
+}
+.billing Row Col input {
+  width: 88% !important;
+  height: 3em;
+  border-radius: 0%;
+  border: #959595 1px solid;
+}
+.card-details {
+  padding: 1%;
+}
+.select-payment {
+  text-align: left;
+  font-size: 15px;
+}
+.payment {
+  background-color: #ebe9ec;
+  padding: 3%;
+  text-align: left;
+}
+.pay {
+  padding: 3%;
+  background-color: #dedcdd;
+  font-size: 15px;
+}
+.card-input {
+  width: 100%;
+  height: 1.5em;
+  border: none;
+  border-radius: 1px;
+  font-size: 15px;
+}
+.place-order {
+  width: 9em;
+  background-color: #333232;
+  color: #fff;
+  font-size: 16px;
+  height: 2.5em;
+  border: none;
+  margin-left: 70%;
 }

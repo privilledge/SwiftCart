@@ -30,6 +30,7 @@ const TabsComponent = () => {
       <Tab eventKey="profile" title="Men">
         <Products />
       </Tab>
+
       <Tab eventKey="contact" title="Women">
         <Products />
       </Tab>
