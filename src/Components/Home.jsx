@@ -20,17 +20,21 @@ import { useCart } from "./CartContext";
 import RemoveButton from "./RemoveButton";
 function Home() {
   const navigate = useNavigate();
-  const removeFromCart = () => {
-    alert("working");
-  };
-  const { addToCart } = useCart();
+
+  const { addToCart, removeFromCart, cartItems } = useCart();
   const clickShopButton = () => {
     navigate("/Shop");
   };
   const singleProduct = () => {
     navigate("/SingleProduct");
   };
-
+  const handleRemoveFromCart = (product) => {
+    removeFromCart(product.id);
+    setAddedItems((prevState) => ({ ...prevState, [product.id]: false }));
+  };
+  const isProductInCart = (productId) => {
+    return cartItems.some((item) => item.id === productId);
+  };
   const products = [
     {
       id: 1,
@@ -143,8 +147,14 @@ function Home() {
                         ${product.price} <s>${product.oldPrice}</s>
                       </h6>
                     </div>
-                    <AddButton onClick={() => addToCart(product)} />
-                    {/* <RemoveButton onClick={removeFromCart} /> */}
+                    {isProductInCart(product.id) ? (
+                      <RemoveButton
+                        onClick={() => handleRemoveFromCart(product)}
+                      />
+                    ) : (
+                      <AddButton onClick={() => addToCart(product)} />
+                    )}
+                    {/* <AddButton onClick={() => addToCart(product)} /> */}
                   </div>
                 </div>
               ))}
@@ -165,8 +175,13 @@ function Home() {
                         ${product.price} <s>${product.oldPrice}</s>
                       </h6>
                     </div>
-
-                    <AddButton onClick={() => addToCart(product)} />
+                    {isProductInCart(product.id) ? (
+                      <RemoveButton
+                        onClick={() => handleRemoveFromCart(product)}
+                      />
+                    ) : (
+                      <AddButton onClick={() => addToCart(product)} />
+                    )}
                   </div>
                 </div>
               ))}
@@ -195,12 +210,18 @@ function Home() {
                       ${exclusive.price} <s>${exclusive.oldPrice}</s>
                     </h6>
                     <p className="descrip">{exclusive.description}</p>
-                    <button
-                      className="btn"
-                      onClick={() => addToCart(exclusive)}
-                    >
-                      Add to cart
-                    </button>
+                    {isProductInCart(exclusive.id) ? (
+                      <RemoveButton
+                        onClick={() => handleRemoveFromCart(exclusive)}
+                      />
+                    ) : (
+                      <button
+                        className="btn"
+                        onClick={() => addToCart(exclusive)}
+                      >
+                        Add to cart
+                      </button>
+                    )}
                   </div>
 
                   <div className="image col-5">
@@ -231,7 +252,13 @@ function Home() {
                         ${product.price} <s>${product.oldPrice}</s>
                       </h6>
                     </div>
-                    <AddButton onClick={() => addToCart(product)} />
+                    {isProductInCart(product.id) ? (
+                      <RemoveButton
+                        onClick={() => handleRemoveFromCart(product)}
+                      />
+                    ) : (
+                      <AddButton onClick={() => addToCart(product)} />
+                    )}
                   </div>
                 </div>
               ))}
@@ -252,7 +279,13 @@ function Home() {
                         ${product.price} <s>${product.oldPrice}</s>
                       </h6>
                     </div>
-                    <AddButton onClick={() => addToCart(product)} />
+                    {isProductInCart(product.id) ? (
+                      <RemoveButton
+                        onClick={() => handleRemoveFromCart(product)}
+                      />
+                    ) : (
+                      <AddButton onClick={() => addToCart(product)} />
+                    )}
                   </div>
                 </div>
               ))}
@@ -272,7 +305,13 @@ function Home() {
                         ${product.price} <s>${product.oldPrice}</s>
                       </h6>
                     </div>
-                    <AddButton onClick={() => addToCart(product)} />
+                    {isProductInCart(product.id) ? (
+                      <RemoveButton
+                        onClick={() => handleRemoveFromCart(product)}
+                      />
+                    ) : (
+                      <AddButton onClick={() => addToCart(product)} />
+                    )}
                   </div>
                 </div>
               ))}

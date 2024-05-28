@@ -3,7 +3,7 @@ function RemoveButton({ onClick }) {
     <>
       <div className="remove-button col-5 ">
         <button className="btn remove-item-button" onClick={onClick}>
-          Remove
+          Remove from cart
         </button>
       </div>
     </>

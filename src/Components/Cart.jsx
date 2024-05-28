@@ -4,8 +4,9 @@ import React from "react";
 import { useCart } from "./CartContext";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import RemoveButton from "./RemoveButton";
 function Cart() {
-  const { cartItems, updateItemQuantity } = useCart();
+  const { cartItems, updateItemQuantity, removeFromCart } = useCart();
   const navigate = useNavigate();
   const handleIncrease = (item) => {
     updateItemQuantity(item.id, item.quantity + 1);
@@ -18,6 +19,10 @@ function Cart() {
   };
   const checkout = () => {
     navigate("/Checkout");
+  };
+  const handleRemoveFromCart = (item) => {
+    removeFromCart(item.id);
+    setAddedItems((prevState) => ({ ...prevState, [item.id]: false }));
   };
 
   return (
@@ -71,7 +76,11 @@ function Cart() {
                       </Button>
                     </Col>
                     <Col md={3} className="remove-item">
-                      <Button variant="danger" size="sm">
+                      <Button
+                        variant="danger"
+                        size="sm"
+                        onClick={() => handleRemoveFromCart(item)}
+                      >
                         <svg
                           stroke="currentColor"
                           fill="currentColor"
@@ -128,6 +137,7 @@ function Cart() {
           )}
         </Row>
       </div>
+      <br />
     </>
   );
 }

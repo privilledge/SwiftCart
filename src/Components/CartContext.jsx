@@ -23,6 +23,11 @@ export function CartProvider({ children }) {
       return [...prevItems, { ...product, quantity: 1 }];
     });
   };
+  const removeFromCart = (productId) => {
+    setCartItems((prevItems) =>
+      prevItems.filter((item) => item.id !== productId)
+    );
+  };
 
   const updateItemQuantity = (productId, quantity) => {
     setCartItems((prevItems) =>
@@ -35,6 +40,7 @@ export function CartProvider({ children }) {
   const value = {
     cartItems,
     addToCart,
+    removeFromCart,
     updateItemQuantity,
   };
 

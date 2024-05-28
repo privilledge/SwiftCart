@@ -11,9 +11,10 @@ import Image9 from "../assets/products/product_9.png";
 import Image10 from "../assets/products/product_10.png";
 import AddButton from "./AddButton";
 import { useCart } from "./CartContext";
+import RemoveButton from "./RemoveButton";
 
 function Products() {
-  const { addToCart } = useCart();
+  const { addToCart, removeFromCart, cartItems } = useCart();
   const products = [
     {
       id: 1,
@@ -79,6 +80,9 @@ function Products() {
       image: Image10,
     },
   ];
+  const isProductInCart = (productId) => {
+    return cartItems.some((item) => item.id === productId);
+  };
 
   return (
     <>
@@ -93,7 +97,11 @@ function Products() {
                   ${product.price} <s>${product.oldPrice}</s>
                 </h6>
               </div>
-              <AddButton onClick={() => addToCart(product)} />
+              {isProductInCart(product.id) ? (
+                <RemoveButton onClick={() => handleRemoveFromCart(product)} />
+              ) : (
+                <AddButton onClick={() => addToCart(product)} />
+              )}
             </div>
           </div>
         ))}
@@ -110,7 +118,11 @@ function Products() {
                   ${product.price} <s>${product.oldPrice}</s>
                 </h6>
               </div>
-              <AddButton onClick={() => addToCart(product)} />
+              {isProductInCart(product.id) ? (
+                <RemoveButton onClick={() => handleRemoveFromCart(product)} />
+              ) : (
+                <AddButton onClick={() => addToCart(product)} />
+              )}
             </div>
           </div>
         ))}
@@ -127,7 +139,11 @@ function Products() {
                   ${product.price} <s>${product.oldPrice}</s>
                 </h6>
               </div>
-              <AddButton onClick={() => addToCart(product)} />
+              {isProductInCart(product.id) ? (
+                <RemoveButton onClick={() => handleRemoveFromCart(product)} />
+              ) : (
+                <AddButton onClick={() => addToCart(product)} />
+              )}
             </div>
           </div>
         ))}

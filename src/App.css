@@ -91,6 +91,8 @@ s {
 }
 .box:hover .button > .cart-button {
   opacity: 1;
+  color: #1dcda4;
+  text-decoration: underline;
 }
 .box:hover .button > .btn {
   opacity: 1;
@@ -405,6 +407,7 @@ p {
 .remove-item-button {
   background-color: #c80000 !important;
   color: #fff;
+  font-size: 13px !important;
 }
 .single-product-container {
   margin-top: 1%;
