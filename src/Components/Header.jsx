@@ -2,9 +2,17 @@ import React from "react";
 import "../App.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-function Header() {
+function Header({ onSearch }) {
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+
+  const handleInputChange = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+    onSearch(query);
+  };
 
   const handleCartClick = () => {
     navigate("/cart");
@@ -38,6 +46,8 @@ function Header() {
                   type="text"
                   className="search-input"
                   placeholder="Search"
+                  value={searchQuery}
+                  onChange={handleInputChange}
                 />
                 <button className="primary search-button">
                   <svg
@@ -73,9 +83,14 @@ function Header() {
                     Shop
                   </a>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <a className="nav-link" href="/contact">
                     Contact
+                  </a>
+                </li> */}
+                <li className="nav-item">
+                  <a className="nav-link" href="/login">
+                    Login
                   </a>
                 </li>
               </ul>

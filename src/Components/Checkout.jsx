@@ -1,6 +1,8 @@
 import Header from "./Header";
 import { Row, Col } from "react-bootstrap";
+import { useCart } from "./CartContext";
 function Checkout() {
+  const { cartItems, updateItemQuantity, removeFromCart } = useCart();
   return (
     <>
       <Header />
@@ -14,12 +16,12 @@ function Checkout() {
                 <Col md={6}>
                   <label htmlFor="first-name">First name</label>
                   <br />
-                  <input type="text" className="col-input" />
+                  <input type="text" className="col-input" required />
                 </Col>
                 <Col md={6}>
                   <label htmlFor="last-name">Last name</label>
                   <br />
-                  <input type="text" className="col-input" />
+                  <input type="text" className="col-input" required />
                 </Col>
               </Row>
               <br />
@@ -37,6 +39,7 @@ function Checkout() {
                 className="billing-input"
                 type="text"
                 placeholder="House number and street name"
+                required
               />
               <br />
               <br />
@@ -44,6 +47,7 @@ function Checkout() {
                 className="billing-input"
                 type="text"
                 placeholder="Apartment,suite,unit etc"
+                required
               />
               <br />
               <br />
@@ -62,7 +66,7 @@ function Checkout() {
               <br />
               <label htmlFor="last-name">Zip code</label>
               <br />
-              <input className="billing-input" type="text" />
+              <input className="billing-input" type="text" required />
               <br />
               <br />
               <label htmlFor="last-name">Phone</label>
@@ -76,6 +80,7 @@ function Checkout() {
                 className="billing-input"
                 type="email"
                 placeholder="youremail@gmail.com"
+                required
               />
               <br />
               <br />
@@ -87,7 +92,7 @@ function Checkout() {
               <input
                 type="text"
                 className="col-input"
-                placeholder="Order about your order "
+                placeholder="Notes about your order "
               />
             </form>
           </div>
@@ -95,31 +100,32 @@ function Checkout() {
           <div className="col-lg-6 card-details">
             <h2 className="fw-bold">Your order</h2>
             <div className="order-summary">
-              <div className="row">
+              <Row>
                 <Col md={6}>Product</Col>
                 <Col md={6}>Subtotal</Col>
-              </div>
+              </Row>
               <hr />
-              <div className="row">
-                <Col md={6}>Sunglasses</Col>
-                <Col md={6}>$17.99</Col>
-              </div>
-              <hr />
-              <div className="row">
-                <Col md={6}>Brown bag</Col>
-                <Col md={6}>$23.99</Col>
-              </div>
-              <hr />
-              <div className="row">
-                <Col md={6}>Subtotal</Col>
-                <Col md={6}>$41.98</Col>
-              </div>
-              <hr />
-              <div className="row">
+              {cartItems.map((product) => (
+                <Row>
+                  <Col md={6}>{product.name}</Col>
+                  <Col md={6}>${product.price}</Col>
+                  <hr className="order-line" />
+                </Row>
+              ))}
+
+              <Row>
                 <Col md={6}>Total</Col>
-                <Col md={6}>$41.98</Col>
-              </div>
+
+                <Col md={6}>
+                  ${" "}
+                  {cartItems.reduce(
+                    (total, item) => total + item.price * item.quantity,
+                    0
+                  )}
+                </Col>
+              </Row>
             </div>
+
             <br />
             <br />
             <div className="payment">

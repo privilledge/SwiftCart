@@ -1,7 +1,29 @@
 import Header from "./Header";
 import { Row, Col } from "react-bootstrap";
 import Image from "../assets/products/product_2.png";
+import products from "../assets/data/products";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import RemoveButton from "./RemoveButton";
+import { useCart } from "./CartContext";
+
 function SingleProduct() {
+  const { addToCart, removeFromCart, cartItems } = useCart();
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const product = products.find((p) => p.id === parseInt(id));
+
+  if (!product) {
+    return <div>Product is currently unavailable</div>;
+  }
+  const handleRemoveFromCart = (product) => {
+    removeFromCart(product.id);
+    setAddedItems((prevState) => ({ ...prevState, [product.id]: false }));
+  };
+  const isProductInCart = (productId) => {
+    return cartItems.some((item) => item.id === productId);
+  };
+
   return (
     <>
       <Header />
@@ -9,24 +31,35 @@ function SingleProduct() {
         <Row>
           <Col md={6} className="big-image">
             <div className="image-container">
-              <img src={Image} alt="Procuct image" />
+              <img src={product.image} alt="Procuct image" />
             </div>
           </Col>
           <Col md={6} className="product-summary">
-            <h5>Brown Fun bag</h5>
+            <h5>{product.name}</h5>
             <h6>
-              $17.99<s>$21.99</s>
+              ${product.price}
+              <s>${product.oldPrice}</s>
             </h6>
             <br />
-            <p className="lead">
-              {" "}
-              "DECARSDZ Men's Oxfords Casual Dress Shoes for Men Sneaker
-              Business Walking Comfortable Tennis Mesh Fabric Shoes. The color
-              could be slightly different between on the screen and in practice"
-            </p>
+            <p className="lead">{product.description}</p>
             <br />
-            <button className="button back-button">Back to shop</button>&nbsp;
-            <button className="button add-cart">Add to Cart</button>
+            <button
+              className="button back-button"
+              onClick={() => navigate("/shop")}
+            >
+              Back to shop
+            </button>
+            &nbsp;
+            {isProductInCart(product.id) ? (
+              <RemoveButton onClick={() => handleRemoveFromCart(product)} />
+            ) : (
+              <button
+                className="button add-cart"
+                onClick={() => addToCart(product)}
+              >
+                Add to Cart
+              </button>
+            )}
           </Col>
         </Row>
         <br />

@@ -12,48 +12,50 @@ import Image10 from "../assets/products/product_10.png";
 import AddButton from "./AddButton";
 import { useCart } from "./CartContext";
 import RemoveButton from "./RemoveButton";
+import { useNavigate } from "react-router-dom";
 
 function Products() {
   const { addToCart, removeFromCart, cartItems } = useCart();
+  const navigate = useNavigate();
   const products = [
     {
       id: 1,
-      name: "Brown fun b...",
+      name: "Brown fun bag",
       price: 17,
       oldPrice: 21,
       image: Image,
     },
     {
       id: 2,
-      name: "Fleece Sweaters pu...",
+      name: "Fleece Sweaters ",
       price: 35,
       oldPrice: 38,
       image: Image6,
     },
     {
       id: 3,
-      name: "Women's Leather W...",
+      name: "Women's Leather Wallet",
       price: 23,
       oldPrice: 27,
       image: Image7,
     },
     {
       id: 4,
-      name: "Fleece Sweaters pul...",
+      name: "Fleece Sweaters ",
       price: 45,
       oldPrice: 70,
       image: Image1,
     },
     {
       id: 5,
-      name: "Basics duffel bag...",
+      name: "Basics duffel bag",
       price: 21,
       oldPrice: 24,
       image: Image2,
     },
     {
       id: 6,
-      name: "Men's Hoodie Cas...",
+      name: "Men's Hoodie Casual",
       price: 45,
       oldPrice: 70,
       image: Image3,
@@ -83,6 +85,9 @@ function Products() {
   const isProductInCart = (productId) => {
     return cartItems.some((item) => item.id === productId);
   };
+  const handleProductClick = (id) => {
+    navigate(`/product/${id}`);
+  };
 
   return (
     <>
@@ -92,7 +97,12 @@ function Products() {
             <img src={product.image} alt={product.name} />
             <div className="bottom row">
               <div className="info col-7">
-                <h6 className="product-name">{product.name}</h6>
+                <h6
+                  className="product-name"
+                  onClick={() => handleProductClick(product.id)}
+                >
+                  {product.name}
+                </h6>
                 <h6 className="price">
                   ${product.price} <s>${product.oldPrice}</s>
                 </h6>
@@ -113,7 +123,12 @@ function Products() {
             <img src={product.image} alt={product.name} />
             <div className="bottom row">
               <div className="info col-7">
-                <h6 className="product-name">{product.name}</h6>
+                <h6
+                  className="product-name"
+                  onClick={() => handleProductClick(product.id)}
+                >
+                  {product.name}
+                </h6>
                 <h6 className="price">
                   ${product.price} <s>${product.oldPrice}</s>
                 </h6>
@@ -134,7 +149,12 @@ function Products() {
             <img src={product.image} alt={product.name} />
             <div className="bottom row">
               <div className="info col-7">
-                <h6 className="product-name">{product.name}</h6>
+                <h6
+                  className="product-name"
+                  onClick={() => handleProductClick(product.id)}
+                >
+                  {product.name}
+                </h6>
                 <h6 className="price">
                   ${product.price} <s>${product.oldPrice}</s>
                 </h6>

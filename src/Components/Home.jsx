@@ -10,11 +10,14 @@ import Image7 from "../assets/products/product_8.png";
 import Image8 from "../assets/products/product_8.png";
 import Image9 from "../assets/products/product_9.png";
 import Image10 from "../assets/products/product_10.png";
+import Trend from "../assets/products/trend.png";
+import BagImage from "../assets/products/slingBag.png";
 import Promo from "./Promo";
 import Header from "./Header";
 import Footer from "./Footer";
 import AddButton from "./AddButton";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import { useCart } from "./CartContext";
 import RemoveButton from "./RemoveButton";
@@ -35,45 +38,48 @@ function Home() {
   const isProductInCart = (productId) => {
     return cartItems.some((item) => item.id === productId);
   };
+
+  const [searchQuery, setSearchQuery] = useState("");
+
   const products = [
     {
       id: 1,
-      name: "Brown fun b...",
+      name: "Brown fun bag",
       price: 17,
       oldPrice: 21,
       image: Image,
     },
     {
       id: 2,
-      name: "Fleece Sweaters pu...",
+      name: "Fleece Sweaters ",
       price: 35,
       oldPrice: 38,
       image: Image6,
     },
     {
       id: 3,
-      name: "Women's Leather W...",
+      name: "Women's Leather wallet",
       price: 23,
       oldPrice: 27,
       image: Image7,
     },
     {
       id: 4,
-      name: "Fleece Sweaters pul...",
+      name: "Fleece Sweaters ",
       price: 45,
       oldPrice: 70,
       image: Image1,
     },
     {
       id: 5,
-      name: "Basics duffel bag...",
+      name: "Basics duffel bag",
       price: 21,
       oldPrice: 24,
       image: Image2,
     },
     {
       id: 6,
-      name: "Men's Hoodie Cas...",
+      name: "Men's Hoodie Casual",
       price: 45,
       oldPrice: 70,
       image: Image3,
@@ -121,10 +127,20 @@ function Home() {
         "Locachy Men's Casual Corduroy Shirt Loose Button Down Corduroy Shacket Jacke.Soft fabric, comfortable and breathable, smooth to the touch.",
     },
   ];
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+  const handleProductClick = (id) => {
+    navigate(`/product/${id}`);
+  };
 
   return (
     <>
-      <Header />
+      <Header onSearch={handleSearch} />
       <Carousel />
       <div className="home">
         <div className="container">
@@ -140,7 +156,10 @@ function Home() {
                   <img src={product.image} alt={product.name} />
                   <div className="bottom row">
                     <div className="info col-7">
-                      <h6 className="product-name" onClick={singleProduct}>
+                      <h6
+                        className="product-name"
+                        onClick={() => handleProductClick(product.id)}
+                      >
                         {product.name}
                       </h6>
                       <h6 className="price">
@@ -154,7 +173,6 @@ function Home() {
                     ) : (
                       <AddButton onClick={() => addToCart(product)} />
                     )}
-                    {/* <AddButton onClick={() => addToCart(product)} /> */}
                   </div>
                 </div>
               ))}
@@ -170,7 +188,12 @@ function Home() {
                   <img src={product.image} alt={product.name} />
                   <div className="bottom row">
                     <div className="info col-7">
-                      <h6 className="product-name">{product.name}</h6>
+                      <h6
+                        className="product-name"
+                        onClick={() => handleProductClick(product.id)}
+                      >
+                        {product.name}
+                      </h6>
                       <h6 className="price">
                         ${product.price} <s>${product.oldPrice}</s>
                       </h6>
@@ -190,11 +213,7 @@ function Home() {
           </div>
         </div>
         <br />
-        <div className="more-btn">
-          <button className="btn shop-btn" onClick={clickShopButton}>
-            Show more products
-          </button>
-        </div>
+
         <br />
 
         <div className="container">
@@ -205,7 +224,12 @@ function Home() {
               <div className="col-lg-6 box">
                 <div className="row offers" key={exclusive.id}>
                   <div className="info col-lg-7 col-md-12 col-sm-12">
-                    <h6 className="fw-bold product-name">{exclusive.name}</h6>
+                    <h6
+                      className="fw-bold product-name"
+                      onClick={() => handleProductClick(exclusive.id)}
+                    >
+                      {exclusive.name}
+                    </h6>
                     <h6 className="fw-bold">
                       ${exclusive.price} <s>${exclusive.oldPrice}</s>
                     </h6>
@@ -234,35 +258,58 @@ function Home() {
           </div>
         </div>
         <br />
+        <br />
+        <div className="trends">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-5 ">
+                <img src={Trend} alt="" className="trend-image" />
+              </div>
+              <div className="col-lg-7">
+                <span>Grab your 50% off</span>
+                <br />
+                <h2>Trends for women</h2>
+                <div className="row">
+                  <div className="container trending boxes">
+                    {products.slice(0, 3).map((product) => (
+                      <div
+                        className="col-lg-4 col-md-4 col-sm-12 box"
+                        key={product.id}
+                      >
+                        <img src={product.image} alt={product.name} />
+                        <div className="bottom row">
+                          <div className="info col-7">
+                            <h6
+                              className="product-name"
+                              onClick={() => handleProductClick(product.id)}
+                            >
+                              {product.name}
+                            </h6>
+                            <h6 className="price">
+                              ${product.price} <s>${product.oldPrice}</s>
+                            </h6>
+                          </div>
+                          {isProductInCart(product.id) ? (
+                            <RemoveButton
+                              onClick={() => handleRemoveFromCart(product)}
+                            />
+                          ) : (
+                            <AddButton onClick={() => addToCart(product)} />
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
         <div className="container">
           <div className="new-products">
             <h5 className="fw-bold title">Deals under $25</h5>
             <hr className="line-deco" />
-            <div className="container boxes">
-              {products.slice(0, 3).map((product) => (
-                <div
-                  className="col-lg-4 col-md-4 col-sm-12 box"
-                  key={product.id}
-                >
-                  <img src={product.image} alt={product.name} />
-                  <div className="bottom row">
-                    <div className="info col-7">
-                      <h6 className="product-name">{product.name}</h6>
-                      <h6 className="price">
-                        ${product.price} <s>${product.oldPrice}</s>
-                      </h6>
-                    </div>
-                    {isProductInCart(product.id) ? (
-                      <RemoveButton
-                        onClick={() => handleRemoveFromCart(product)}
-                      />
-                    ) : (
-                      <AddButton onClick={() => addToCart(product)} />
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
 
             <br />
             <div className="container boxes">
@@ -274,7 +321,12 @@ function Home() {
                   <img src={product.image} alt={product.name} />
                   <div className="bottom row">
                     <div className="info col-7">
-                      <h6 className="product-name">{product.name}</h6>
+                      <h6
+                        className="product-name"
+                        onClick={() => handleProductClick(product.id)}
+                      >
+                        {product.name}
+                      </h6>
                       <h6 className="price">
                         ${product.price} <s>${product.oldPrice}</s>
                       </h6>
@@ -300,7 +352,12 @@ function Home() {
                   <img src={product.image} alt={product.name} />
                   <div className="bottom row">
                     <div className="info col-7">
-                      <h6 className="product-name">{product.name}</h6>
+                      <h6
+                        className="product-name"
+                        onClick={() => handleProductClick(product.id)}
+                      >
+                        {product.name}
+                      </h6>
                       <h6 className="price">
                         ${product.price} <s>${product.oldPrice}</s>
                       </h6>
@@ -319,6 +376,9 @@ function Home() {
           </div>
         </div>
       </div>
+      <br />
+      <br />
+
       <br />
       <br />
       <Promo />

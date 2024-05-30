@@ -48,8 +48,8 @@ function Footer() {
                     </p>
                     <p>
                       {" "}
-                      <a style={{ color: "black" }} href="">
-                        Search
+                      <a style={{ color: "black" }} href="/contact">
+                        Contact
                       </a>
                     </p>
                   </div>

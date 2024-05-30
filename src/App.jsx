@@ -9,11 +9,11 @@ import SingleProduct from "./Components/SingleProduct.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./Components/Cart.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import Login from "./Components/Login.jsx";
 import "./App.css";
 import Shop from "./Components/Shop.jsx";
 import Checkout from "./Components/Checkout.jsx";
-
+import Signup from "./Components/Signup.jsx";
 function App() {
   return (
     <div className="body">
@@ -25,17 +25,12 @@ function App() {
             <Route path="checkout" element={<Checkout />} />
             <Route path="contact" element={<Contact />} />
             <Route path="cart" element={<Cart />} />
-            <Route path="singleProduct" element={<SingleProduct />}></Route>
+            <Route path="product/:id" element={<SingleProduct />}></Route>
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
           </Routes>
         </BrowserRouter>
       </CartProvider>
-      {/* <Header />
-        <Home /> */}
-      {/* <Routes>
-          <Route path="/shop" exact component={shop} />
-        </Routes>
-        <Home /> */}
-      {/* <Footer /> */}
     </div>
   );
 }
