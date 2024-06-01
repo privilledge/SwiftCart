@@ -1,6 +1,9 @@
 import Header from "./Header";
 import { Row, Col } from "react-bootstrap";
 function Signup() {
+  const apiLink = "http://localhost:9090/api/signup";
+  const first_name = "";
+  const addTodb = () => {};
   return (
     <>
       <Header />
@@ -19,6 +22,7 @@ function Signup() {
                   className="col-input"
                   placeholder="First name"
                   required
+                  value={first_name}
                 />
               </Col>
               <Col md={6}>
@@ -100,7 +104,7 @@ function Signup() {
             />
             <br />
             <br />
-            <button className="btn" type="submit">
+            <button className="btn" type="submit" onClick={addTodb}>
               Sign up
             </button>
           </form>

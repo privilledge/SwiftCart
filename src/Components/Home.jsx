@@ -11,7 +11,6 @@ import Image8 from "../assets/products/product_8.png";
 import Image9 from "../assets/products/product_9.png";
 import Image10 from "../assets/products/product_10.png";
 import Trend from "../assets/products/trend.png";
-import BagImage from "../assets/products/slingBag.png";
 import Promo from "./Promo";
 import Header from "./Header";
 import Footer from "./Footer";

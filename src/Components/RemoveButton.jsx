@@ -1,7 +1,7 @@
 function RemoveButton({ onClick }) {
   return (
     <>
-      <div className="remove-button col-6 ">
+      <div className="button remove-button col-5 ">
         <h6 className=" remove-item-button" onClick={onClick}>
           -Remove from cart
         </h6>
