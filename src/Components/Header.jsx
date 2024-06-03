@@ -3,10 +3,13 @@ import "../App.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { AuthContext } from "./AuthContext";
+import { useContext } from "react";
 
 function Header({ onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+  const { isAuthenticated, logout } = useContext(AuthContext);
 
   const handleInputChange = (event) => {
     const query = event.target.value;
@@ -17,7 +20,10 @@ function Header({ onSearch }) {
   const handleCartClick = () => {
     navigate("/cart");
   };
-
+  const handleLogoutClick = () => {
+    logout();
+    navigate("/");
+  };
   return (
     <>
       <div className="sticky-top">
@@ -84,11 +90,19 @@ function Header({ onSearch }) {
                   </a>
                 </li>
 
-                <li className="nav-item">
-                  <a className="nav-link" href="/login">
-                    Login
-                  </a>
-                </li>
+                {isAuthenticated ? (
+                  <li className="nav-item">
+                    <button className="nav-link" onClick={handleLogoutClick}>
+                      Logout
+                    </button>
+                  </li>
+                ) : (
+                  <li className="nav-item">
+                    <a className="nav-link" href="/login">
+                      Login
+                    </a>
+                  </li>
+                )}
               </ul>
               &nbsp;
               <svg
