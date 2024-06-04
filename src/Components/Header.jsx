@@ -21,8 +21,11 @@ function Header({ onSearch }) {
     navigate("/cart");
   };
   const handleLogoutClick = () => {
-    logout();
-    navigate("/");
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    if (confirmLogout) {
+      logout();
+      navigate("/");
+    }
   };
   return (
     <>

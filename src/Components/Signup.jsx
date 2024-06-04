@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Header from "./Header";
 import { Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "./AuthContext";
 
 function Signup() {
+  const { login } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -36,6 +38,7 @@ function Signup() {
         body: JSON.stringify(formData),
       });
       const result = await response.text();
+      login();
       alert(result);
     } catch (error) {
       console.error("Error:", error);

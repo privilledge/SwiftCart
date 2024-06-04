@@ -109,19 +109,30 @@ function Checkout() {
                 <Row>
                   <Col md={6}>{product.name}</Col>
                   <Col md={6}>${product.price}</Col>
+
                   <hr className="order-line" />
                 </Row>
               ))}
+              <Row style={{ color: "#c80000" }}>
+                <Col md={6}>Shipping fee</Col>
 
+                <Col md={6}>$5</Col>
+                <hr className="order-line" />
+              </Row>
               <Row>
-                <Col md={6}>Total</Col>
+                <Col md={6}>
+                  <b>Total</b>
+                </Col>
 
                 <Col md={6}>
-                  ${" "}
-                  {cartItems.reduce(
-                    (total, item) => total + item.price * item.quantity,
-                    0
-                  )}
+                  <b>
+                    {" "}
+                    ${" "}
+                    {cartItems.reduce(
+                      (total, item) => total + item.price * item.quantity + 5,
+                      0
+                    )}
+                  </b>
                 </Col>
               </Row>
             </div>

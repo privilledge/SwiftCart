@@ -5,8 +5,11 @@ import { useCart } from "./CartContext";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import RemoveButton from "./RemoveButton";
+import { AuthContext } from "./AuthContext";
+import { useContext } from "react";
 function Cart() {
   const { cartItems, updateItemQuantity, removeFromCart } = useCart();
+  const { isAuthenticated, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleIncrease = (item) => {
     updateItemQuantity(item.id, item.quantity + 1);
@@ -129,10 +132,19 @@ function Cart() {
                 <Form.Control type="text" placeholder="Enter your code" />
               </Form.Group>
               <br />
-
-              <Button className="checkout" variant="dark" onClick={checkout}>
-                CHECKOUT
-              </Button>
+              {isAuthenticated ? (
+                <Button className="checkout" variant="dark" onClick={checkout}>
+                  CHECKOUT
+                </Button>
+              ) : (
+                <Button
+                  className="login-checkout"
+                  variant="dark"
+                  onClick={() => navigate("/login")}
+                >
+                  Log in to checkout
+                </Button>
+              )}
             </Col>
           )}
         </Row>

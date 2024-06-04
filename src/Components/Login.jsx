@@ -3,6 +3,8 @@ import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import { useContext } from "react";
+import Products from "./Products";
+import { Col } from "react-bootstrap";
 
 function Login() {
   const navigate = useNavigate();

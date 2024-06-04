@@ -14,6 +14,22 @@ import { useCart } from "./CartContext";
 import RemoveButton from "./RemoveButton";
 import { useNavigate } from "react-router-dom";
 
+const accessories = [
+  {
+    id: 1,
+    name: "Brown fun bag",
+    price: 17,
+    oldPrice: 21,
+    image: Image,
+  },
+  {
+    id: 2,
+    name: "Fleece Sweaters ",
+    price: 35,
+    oldPrice: 38,
+    image: Image6,
+  },
+];
 function Products() {
   const { addToCart, removeFromCart, cartItems } = useCart();
   const navigate = useNavigate();
