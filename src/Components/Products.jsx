@@ -6,7 +6,6 @@ import Image4 from "../assets/products/product_5.png";
 import Image5 from "../assets/products/product_6.png";
 import Image6 from "../assets/products/product_7.png";
 import Image7 from "../assets/products/product_8.png";
-
 import Image9 from "../assets/products/product_9.png";
 import Image10 from "../assets/products/product_10.png";
 import AddButton from "./AddButton";
@@ -30,6 +29,10 @@ const accessories = [
     image: Image6,
   },
 ];
+const men = [];
+const women = [];
+const children = [];
+const shoes = [];
 function Products() {
   const { addToCart, removeFromCart, cartItems } = useCart();
   const navigate = useNavigate();

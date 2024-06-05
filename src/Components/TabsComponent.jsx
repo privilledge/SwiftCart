@@ -1,16 +1,5 @@
-import Image from "../assets/products/product_2.png";
-import Image1 from "../assets/products/product_3.png";
-import Image2 from "../assets/products/product_4.png";
-import Image3 from "../assets/products/product1.png";
-import Image4 from "../assets/products/product_5.png";
-import Image5 from "../assets/products/product_6.png";
-import Image6 from "../assets/products/product_7.png";
-import Image7 from "../assets/products/product_8.png";
-import Image8 from "../assets/products/product_8.png";
-import Image9 from "../assets/products/product_9.png";
-import Image10 from "../assets/products/product_10.png";
 import Products from "./Products";
-import AddButton from "./AddButton";
+
 import { useCart } from "./CartContext";
 // TabsComponent.js
 import React from "react";

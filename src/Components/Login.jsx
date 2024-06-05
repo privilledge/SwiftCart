@@ -5,12 +5,15 @@ import { AuthContext } from "./AuthContext";
 import { useContext } from "react";
 import Products from "./Products";
 import { Col } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 
 function Login() {
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const { login } = useContext(AuthContext);
+  const [showModal, setShowModal] = useState(false);
+  const [loginMessage, setLoginMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,17 +40,22 @@ function Login() {
       const result = await response.text();
 
       if (result === "Login successful") {
+        setLoginMessage("Login successful");
         localStorage.setItem("token", result);
-        alert(result);
+        // alert(result);
         login();
         navigate("/cart");
       } else {
-        alert(result);
+        setLoginMessage("Invalid email or password");
       }
     } catch (error) {
       console.error("Error:", error);
       alert("Failed to login");
     }
+    setShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
   return (
     <>
@@ -91,6 +99,11 @@ function Login() {
           </span>
           <br />
         </form>
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>{loginMessage}</Modal.Title>
+          </Modal.Header>
+        </Modal>
       </div>
     </>
   );

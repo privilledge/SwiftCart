@@ -9,7 +9,7 @@
   background-color: rgb(250, 250, 250);
 }
 .navbar-nav > li {
-  margin-right: 13px; /* Adjust the value as needed */
+  margin-right: 30px; /* Adjust the value as needed */
 }
 .navbar {
   margin-left: 5%;
@@ -297,7 +297,7 @@ p {
 }
 
 .shop-container {
-  border: #ede8e8 solid 1px;
+  border: #ede8e8 solid 2px;
 
   padding: 3%;
 }
@@ -580,4 +580,10 @@ p {
 }
 .login-checkout {
   background-color: #c80000 !important;
+}
+.modal-content {
+  margin-top: 20%;
+}
+.modal-header {
+  color: #1d1c1c;
 }

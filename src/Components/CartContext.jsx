@@ -1,5 +1,5 @@
 // src/context/CartContext.js
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
 
@@ -9,6 +9,22 @@ export function useCart() {
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    async function fetchCartItem() {
+      try {
+        const response = await fetch("http://localhost:9090/cart");
+        if (response.ok) {
+          const data = await response.json();
+          setCartItems(data);
+        } else {
+          console.log("Failed to fetch cart items");
+        }
+      } catch {
+        console.log("failed to fetch cart items");
+      }
+    }
+    fetchCartItem();
+  }, []);
 
   const addToCart = (product) => {
     setCartItems((prevItems) => {

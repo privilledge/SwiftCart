@@ -139,7 +139,7 @@ function Home() {
 
   return (
     <>
-      <Header onSearch={handleSearch} />
+      <Header showSearch={false} onSearch={handleSearch} />
       <Carousel />
       <div className="home">
         <div className="container">

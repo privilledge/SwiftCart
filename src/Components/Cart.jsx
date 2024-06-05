@@ -1,12 +1,11 @@
-// src/components/Cart.jsx
 import Header from "./Header";
 import React from "react";
 import { useCart } from "./CartContext";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import RemoveButton from "./RemoveButton";
 import { AuthContext } from "./AuthContext";
 import { useContext } from "react";
+
 function Cart() {
   const { cartItems, updateItemQuantity, removeFromCart } = useCart();
   const { isAuthenticated, logout } = useContext(AuthContext);

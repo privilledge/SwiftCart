@@ -6,10 +6,8 @@ import PillsComponent from "./Pills";
 function Shop() {
   return (
     <>
-      <Header />
-      <div className="carouse">
-        <h3>Shop</h3>
-      </div>
+      <Header showSearch={true} />
+
       <br />
 
       <div className="container shop-container">
