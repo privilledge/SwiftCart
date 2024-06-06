@@ -13,27 +13,7 @@ import { useCart } from "./CartContext";
 import RemoveButton from "./RemoveButton";
 import { useNavigate } from "react-router-dom";
 
-const accessories = [
-  {
-    id: 1,
-    name: "Brown fun bag",
-    price: 17,
-    oldPrice: 21,
-    image: Image,
-  },
-  {
-    id: 2,
-    name: "Fleece Sweaters ",
-    price: 35,
-    oldPrice: 38,
-    image: Image6,
-  },
-];
-const men = [];
-const women = [];
-const children = [];
-const shoes = [];
-function Products() {
+function Products({ category }) {
   const { addToCart, removeFromCart, cartItems } = useCart();
   const navigate = useNavigate();
   const products = [
@@ -43,6 +23,7 @@ function Products() {
       price: 17,
       oldPrice: 21,
       image: Image,
+      categories: ["accessories", "new"],
     },
     {
       id: 2,
@@ -50,6 +31,7 @@ function Products() {
       price: 35,
       oldPrice: 38,
       image: Image6,
+      categories: ["women", "deals", "womenPromo"],
     },
     {
       id: 3,
@@ -57,20 +39,16 @@ function Products() {
       price: 23,
       oldPrice: 27,
       image: Image7,
+      categories: ["women", "accessories", "deals", "womenPromo"],
     },
-    {
-      id: 4,
-      name: "Fleece Sweaters ",
-      price: 45,
-      oldPrice: 70,
-      image: Image1,
-    },
+
     {
       id: 5,
       name: "Basics duffel bag",
       price: 21,
       oldPrice: 24,
       image: Image2,
+      categories: ["accessories", "new"],
     },
     {
       id: 6,
@@ -78,6 +56,7 @@ function Products() {
       price: 45,
       oldPrice: 70,
       image: Image3,
+      categories: ["men", "deals", "new"],
     },
     {
       id: 7,
@@ -85,6 +64,7 @@ function Products() {
       price: 45,
       oldPrice: 70,
       image: Image4,
+      categories: ["men", "shoes", "new"],
     },
     {
       id: 8,
@@ -92,6 +72,7 @@ function Products() {
       price: 21,
       oldPrice: 24,
       image: Image5,
+      categories: ["accessories", "deals", "new"],
     },
     {
       id: 9,
@@ -99,8 +80,23 @@ function Products() {
       price: 45,
       oldPrice: 70,
       image: Image10,
+      categories: ["men", "deals", "new"],
+    },
+    {
+      id: 10,
+      name: "Fluffy sweater",
+      price: 35,
+      oldPrice: 50,
+      image: Image1,
+      categories: ["women", "deals", "womenPromo"],
     },
   ];
+  // Filter products based on the category
+  const filteredProducts = category
+    ? products.filter((product) => product.categories.includes(category))
+    : products;
+
+  // Check if item is already added in the cart
   const isProductInCart = (productId) => {
     return cartItems.some((item) => item.id === productId);
   };
@@ -110,83 +106,37 @@ function Products() {
 
   return (
     <>
-      <div className="container boxes">
-        {products.slice(0, 3).map((product) => (
-          <div className="col-lg-4 col-md-4 col-sm-12 box" key={product.id}>
-            <img src={product.image} alt={product.name} />
-            <div className="bottom row">
-              <div className="info col-7">
-                <h6
-                  className="product-name"
-                  onClick={() => handleProductClick(product.id)}
-                >
-                  {product.name}
-                </h6>
-                <h6 className="price">
-                  ${product.price} <s>${product.oldPrice}</s>
-                </h6>
+      <div className="container ">
+        <div className="row">
+          {filteredProducts.map((product) => (
+            <div
+              className="col-lg-4 col-md-6 col-sm-12 box mb-3 mr-auto"
+              key={product.id}
+            >
+              <img src={product.image} alt={product.name} />
+              <div className="bottom row">
+                <div className="info col-7">
+                  <h6
+                    className="product-name"
+                    onClick={() => handleProductClick(product.id)}
+                  >
+                    {product.name}
+                  </h6>
+                  <h6 className="price">
+                    ${product.price} <s>${product.oldPrice}</s>
+                  </h6>
+                </div>
+                {isProductInCart(product.id) ? (
+                  <RemoveButton onClick={() => handleRemoveFromCart(product)} />
+                ) : (
+                  <AddButton onClick={() => addToCart(product)} />
+                )}
               </div>
-              {isProductInCart(product.id) ? (
-                <RemoveButton onClick={() => handleRemoveFromCart(product)} />
-              ) : (
-                <AddButton onClick={() => addToCart(product)} />
-              )}
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       <br></br>
-      <div className="container boxes">
-        {products.slice(3, 6).map((product) => (
-          <div className="col-lg-4 col-md-4 col-sm-12 box" key={product.id}>
-            <img src={product.image} alt={product.name} />
-            <div className="bottom row">
-              <div className="info col-7">
-                <h6
-                  className="product-name"
-                  onClick={() => handleProductClick(product.id)}
-                >
-                  {product.name}
-                </h6>
-                <h6 className="price">
-                  ${product.price} <s>${product.oldPrice}</s>
-                </h6>
-              </div>
-              {isProductInCart(product.id) ? (
-                <RemoveButton onClick={() => handleRemoveFromCart(product)} />
-              ) : (
-                <AddButton onClick={() => addToCart(product)} />
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-      <br></br>
-      <div className="container boxes">
-        {products.slice(6, 9).map((product) => (
-          <div className="col-lg-4 col-md-4 col-sm-12 box" key={product.id}>
-            <img src={product.image} alt={product.name} />
-            <div className="bottom row">
-              <div className="info col-7">
-                <h6
-                  className="product-name"
-                  onClick={() => handleProductClick(product.id)}
-                >
-                  {product.name}
-                </h6>
-                <h6 className="price">
-                  ${product.price} <s>${product.oldPrice}</s>
-                </h6>
-              </div>
-              {isProductInCart(product.id) ? (
-                <RemoveButton onClick={() => handleRemoveFromCart(product)} />
-              ) : (
-                <AddButton onClick={() => addToCart(product)} />
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
     </>
   );
 }

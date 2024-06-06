@@ -17,9 +17,10 @@ import Footer from "./Footer";
 import AddButton from "./AddButton";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-
+import Products from "./Products";
 import { useCart } from "./CartContext";
 import RemoveButton from "./RemoveButton";
+
 function Home() {
   const navigate = useNavigate();
 
@@ -147,67 +148,9 @@ function Home() {
             <h5 className="fw-bold title">Brand new products</h5>
             <hr className="line-deco" />
             <div className="container boxes">
-              {products.slice(0, 3).map((product) => (
-                <div
-                  className="col-lg-4 col-md-4 col-sm-12 box"
-                  key={product.id}
-                >
-                  <img src={product.image} alt={product.name} />
-                  <div className="bottom row">
-                    <div className="info col-7">
-                      <h6
-                        className="product-name"
-                        onClick={() => handleProductClick(product.id)}
-                      >
-                        {product.name}
-                      </h6>
-                      <h6 className="price">
-                        ${product.price} <s>${product.oldPrice}</s>
-                      </h6>
-                    </div>
-                    {isProductInCart(product.id) ? (
-                      <RemoveButton
-                        onClick={() => handleRemoveFromCart(product)}
-                      />
-                    ) : (
-                      <AddButton onClick={() => addToCart(product)} />
-                    )}
-                  </div>
-                </div>
-              ))}
+              <Products category={"new"} />
             </div>
 
-            <br />
-            <div className="container boxes">
-              {products.slice(3, 6).map((product) => (
-                <div
-                  className="col-lg-4 col-md-4 col-sm-12 box"
-                  key={product.id}
-                >
-                  <img src={product.image} alt={product.name} />
-                  <div className="bottom row">
-                    <div className="info col-7">
-                      <h6
-                        className="product-name"
-                        onClick={() => handleProductClick(product.id)}
-                      >
-                        {product.name}
-                      </h6>
-                      <h6 className="price">
-                        ${product.price} <s>${product.oldPrice}</s>
-                      </h6>
-                    </div>
-                    {isProductInCart(product.id) ? (
-                      <RemoveButton
-                        onClick={() => handleRemoveFromCart(product)}
-                      />
-                    ) : (
-                      <AddButton onClick={() => addToCart(product)} />
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
             <br />
           </div>
         </div>
@@ -267,10 +210,11 @@ function Home() {
               <div className="col-lg-7">
                 <span>Grab your 50% off</span>
                 <br />
-                <h2>Trends for women</h2>
+                <h2>Trends for </h2>
                 <div className="row">
                   <div className="container trending boxes">
-                    {products.slice(0, 3).map((product) => (
+                    <Products category={"womenPromo"} />
+                    {/* {products.slice(0, 3).map((product) => (
                       <div
                         className="col-lg-4 col-md-4 col-sm-12 box"
                         key={product.id}
@@ -297,7 +241,7 @@ function Home() {
                           )}
                         </div>
                       </div>
-                    ))}
+                    ))} */}
                   </div>
                 </div>
               </div>
@@ -312,66 +256,9 @@ function Home() {
 
             <br />
             <div className="container boxes">
-              {products.slice(3, 6).map((product) => (
-                <div
-                  className="col-lg-4 col-md-4 col-sm-12 box"
-                  key={product.id}
-                >
-                  <img src={product.image} alt={product.name} />
-                  <div className="bottom row">
-                    <div className="info col-7">
-                      <h6
-                        className="product-name"
-                        onClick={() => handleProductClick(product.id)}
-                      >
-                        {product.name}
-                      </h6>
-                      <h6 className="price">
-                        ${product.price} <s>${product.oldPrice}</s>
-                      </h6>
-                    </div>
-                    {isProductInCart(product.id) ? (
-                      <RemoveButton
-                        onClick={() => handleRemoveFromCart(product)}
-                      />
-                    ) : (
-                      <AddButton onClick={() => addToCart(product)} />
-                    )}
-                  </div>
-                </div>
-              ))}
+              <Products category={"deals"} />
             </div>
             <br />
-            <div className="container boxes">
-              {products.slice(6, 9).map((product) => (
-                <div
-                  className="col-lg-4 col-md-4 col-sm-12 box"
-                  key={product.id}
-                >
-                  <img src={product.image} alt={product.name} />
-                  <div className="bottom row">
-                    <div className="info col-7">
-                      <h6
-                        className="product-name"
-                        onClick={() => handleProductClick(product.id)}
-                      >
-                        {product.name}
-                      </h6>
-                      <h6 className="price">
-                        ${product.price} <s>${product.oldPrice}</s>
-                      </h6>
-                    </div>
-                    {isProductInCart(product.id) ? (
-                      <RemoveButton
-                        onClick={() => handleRemoveFromCart(product)}
-                      />
-                    ) : (
-                      <AddButton onClick={() => addToCart(product)} />
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>

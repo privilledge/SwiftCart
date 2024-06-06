@@ -17,20 +17,20 @@ const TabsComponent = () => {
         <Products />
       </Tab>
       <Tab eventKey="profile" title="Men">
-        <Products />
+        <Products category={"men"} />
       </Tab>
 
-      <Tab eventKey="contact" title="Women">
-        <Products />
+      <Tab eventKey="women" title="Women">
+        <Products category={"women"} />
       </Tab>
       <Tab eventKey="children" title="Children">
-        <Products />
+        <Products category={"children"} />
       </Tab>
       <Tab eventKey="accessories" title="Accessories">
-        <Products />
+        <Products category={"accessories"} />
       </Tab>
       <Tab eventKey="shoes" title="Shoes">
-        <Products />
+        <Products category={"shoes"} />
       </Tab>
     </Tabs>
   );
