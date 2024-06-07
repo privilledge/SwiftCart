@@ -56,20 +56,20 @@ export function CartProvider({ children }) {
     }
   };
   const removeFromCart = async (productId) => {
-    // try {
-    //   const response = await fetch(`http://localhost:9090/cart/${productId}`, {
-    //     method: "DELETE",
-    //   });
-    //   if (response.ok) {
-    //     setCartItems((prevItems) =>
-    //       prevItems.filter((item) => item.id !== productId)
-    //     );
-    //   } else {
-    //     console.log("Failed to delete item");
-    //   }
-    // } catch (error) {
-    //   console.log("Failed to delete item", error);
-    // }
+    try {
+      const response = await fetch(`http://localhost:9090/cart/${productId}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        setCartItems((prevItems) =>
+          prevItems.filter((item) => item.id !== productId)
+        );
+      } else {
+        console.log("Failed to delete item");
+      }
+    } catch (error) {
+      console.log("Failed to delete item", error);
+    }
   };
 
   const updateItemQuantity = (productId, quantity) => {

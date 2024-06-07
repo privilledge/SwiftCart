@@ -14,7 +14,8 @@ import RemoveButton from "./RemoveButton";
 import { useNavigate } from "react-router-dom";
 
 function Products({ category }) {
-  const { addToCart, removeFromCart, cartItems } = useCart();
+  const { addToCart, removeFromCart, cartItems, updateItemQuantity } =
+    useCart();
   const navigate = useNavigate();
   const products = [
     {
@@ -127,7 +128,7 @@ function Products({ category }) {
                   </h6>
                 </div>
                 {isProductInCart(product.id) ? (
-                  <RemoveButton onClick={() => handleRemoveFromCart(product)} />
+                  <RemoveButton onClick={() => removeFromCart(product.id)} />
                 ) : (
                   <AddButton onClick={() => addToCart(product)} />
                 )}

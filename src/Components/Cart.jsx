@@ -10,8 +10,31 @@ function Cart() {
   const { cartItems, updateItemQuantity, removeFromCart } = useCart();
   const { isAuthenticated, logout } = useContext(AuthContext);
   const navigate = useNavigate();
+  // const handleIncrease = (item) => {
+  //   updateItemQuantity(item.id, item.quantity + 1);
+  // };
+
   const handleIncrease = (item) => {
-    updateItemQuantity(item.id, item.quantity + 1);
+    const updatedCartItem = { ...item, quantity: item.quantity + 1 };
+
+    // Send the updated cart item to the backend
+    fetch(`http://localhost:9090/cart/update`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedCartItem),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to update cart item");
+        }
+        // If the request is successful, update the item quantity locally
+        updateItemQuantity(item.id, item.quantity + 1);
+      })
+      .catch((error) => {
+        console.error("Error updating cart item:", error);
+      });
   };
 
   const handleDecrease = (item) => {
@@ -21,10 +44,6 @@ function Cart() {
   };
   const checkout = () => {
     navigate("/Checkout");
-  };
-  const handleRemoveFromCart = (item) => {
-    removeFromCart(item.id);
-    setAddedItems((prevState) => ({ ...prevState, [item.id]: false }));
   };
 
   return (
