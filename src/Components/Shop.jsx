@@ -7,14 +7,19 @@ import { useState } from "react";
 
 function Shop() {
   const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
   return (
     <>
-      <Header showSearch={true} />
+      <Header showSearch={true} onSearch={handleSearch} />
 
       <br />
 
       <div className="container shop-container">
-        <TabsComponent />
+        <TabsComponent searchQuery={searchQuery} />
         <PillsComponent />
       </div>
 

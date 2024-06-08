@@ -5,7 +5,7 @@ import { useCart } from "./CartContext";
 import React from "react";
 import { Tab, Tabs } from "react-bootstrap";
 
-const TabsComponent = () => {
+const TabsComponent = ({ searchQuery }) => {
   const { addToCart } = useCart();
   return (
     <Tabs
@@ -14,23 +14,23 @@ const TabsComponent = () => {
       className="mb-3"
     >
       <Tab eventKey="home" style={{ fontWeight: 900 }} title="All">
-        <Products />
+        <Products searchQuery={searchQuery} />
       </Tab>
       <Tab eventKey="profile" title="Men">
-        <Products category={"men"} />
+        <Products category={"men"} searchQuery={searchQuery} />
       </Tab>
 
       <Tab eventKey="women" title="Women">
-        <Products category={"women"} />
+        <Products category={"women"} searchQuery={searchQuery} />
       </Tab>
       <Tab eventKey="children" title="Children">
-        <Products category={"children"} />
+        <Products category={"children"} searchQuery={searchQuery} />
       </Tab>
       <Tab eventKey="accessories" title="Accessories">
-        <Products category={"accessories"} />
+        <Products category={"accessories"} searchQuery={searchQuery} />
       </Tab>
       <Tab eventKey="shoes" title="Shoes">
-        <Products category={"shoes"} />
+        <Products category={"shoes"} searchQuery={searchQuery} />
       </Tab>
     </Tabs>
   );

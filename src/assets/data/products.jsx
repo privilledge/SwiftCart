@@ -101,22 +101,6 @@ const products = [
     image: Image9,
     description: "Description for Men's Hoodie Casual.",
   },
-  {
-    id: 12,
-    name: "Polo t-shirt",
-    price: 32,
-    oldPrice: 35,
-    image: Image11,
-    description: "Description for Polo t-shirt",
-  },
-  {
-    id: 13,
-    name: "Golf-tshirt",
-    price: 32,
-    oldPrice: 35,
-    image: Image12,
-    description: "Description for Golf t-shirt.",
-  },
 ];
 
 export default products;

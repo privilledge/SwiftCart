@@ -6,14 +6,14 @@ import Image4 from "../assets/products/product_5.png";
 import Image5 from "../assets/products/product_6.png";
 import Image6 from "../assets/products/product_7.png";
 import Image7 from "../assets/products/product_8.png";
-import Image9 from "../assets/products/product_9.png";
 import Image10 from "../assets/products/product_10.png";
+import children from "../assets/products/children.jpg";
 import AddButton from "./AddButton";
 import { useCart } from "./CartContext";
 import RemoveButton from "./RemoveButton";
 import { useNavigate } from "react-router-dom";
 
-function Products({ category }) {
+function Products({ category, searchQuery }) {
   const { addToCart, removeFromCart, cartItems, updateItemQuantity } =
     useCart();
   const navigate = useNavigate();
@@ -91,11 +91,27 @@ function Products({ category }) {
       image: Image1,
       categories: ["women", "deals", "womenPromo"],
     },
+    {
+      id: 16,
+      name: "Kids combo",
+      price: 87,
+      oldPrice: 99,
+      image: children,
+      categories: ["children"],
+    },
   ];
   // Filter products based on the category
-  const filteredProducts = category
+  const filteredByCategory = category
     ? products.filter((product) => product.categories.includes(category))
     : products;
+
+  // Further filter products based on the search query
+  const filteredProducts = filteredByCategory.filter(
+    (product) =>
+      typeof searchQuery === "string" &&
+      typeof product.name === "string" &&
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   // Check if item is already added in the cart
   const isProductInCart = (productId) => {

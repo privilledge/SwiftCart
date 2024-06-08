@@ -39,8 +39,6 @@ function Home() {
     return cartItems.some((item) => item.id === productId);
   };
 
-  const [searchQuery, setSearchQuery] = useState("");
-
   const products = [
     {
       id: 1,
@@ -131,16 +129,13 @@ function Home() {
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-  };
   const handleProductClick = (id) => {
     navigate(`/product/${id}`);
   };
 
   return (
     <>
-      <Header showSearch={false} onSearch={handleSearch} />
+      <Header showSearch={false} />
       <Carousel />
       <div className="home">
         <div className="container">
