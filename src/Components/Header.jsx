@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { AuthContext } from "./AuthContext";
 import { useContext } from "react";
+import { useCart } from "./CartContext";
 
 function Header({ onSearch, showSearch }) {
+  const { cartItems } = useCart();
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   const { isAuthenticated, logout } = useContext(AuthContext);
@@ -126,6 +128,9 @@ function Header({ onSearch, showSearch }) {
                 <circle cx="10.5" cy="19.5" r="1.5"></circle>
                 <circle cx="17.5" cy="19.5" r="1.5"></circle>
               </svg>
+              <span class="badge badge-warning" id="lblCartCount">
+                {cartItems.length}
+              </span>
             </div>
           </div>
         </nav>

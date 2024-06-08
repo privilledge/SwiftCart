@@ -26,15 +26,36 @@ export function CartProvider({ children }) {
     }
     fetchCartItem();
   }, []);
+  const uploadImage = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
 
-  const addToCart = async (product) => {
+    try {
+      const response = await fetch("http://localhost:9090/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const imagePath = await response.text();
+        return imagePath;
+      } else {
+        console.error("Failed to upload image");
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+  };
+  const addToCart = async (product, imageFile) => {
+    const imagePath = await uploadImage(imageFile);
+    const productWithImage = { ...product, image: imagePath };
     try {
       const response = await fetch("http://localhost:9090/cart/add", {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify(product),
+        body: JSON.stringify(productWithImage),
       });
       if (response.ok) {
         setCartItems((prevItems) => {
@@ -55,6 +76,7 @@ export function CartProvider({ children }) {
       console.log("Failed to add item to cart", error);
     }
   };
+
   const removeFromCart = async (productId) => {
     try {
       const response = await fetch(`http://localhost:9090/cart/${productId}`, {

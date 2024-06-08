@@ -39,9 +39,27 @@ function Cart() {
 
   const handleDecrease = (item) => {
     if (item.quantity > 1) {
-      updateItemQuantity(item.id, item.quantity - 1);
+      const updatedCartItem = { ...item, quantity: item.quantity - 1 };
+
+      fetch(`http://localhost:9090/cart/update`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedCartItem),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to update cart item");
+          }
+          updateItemQuantity(item.id, item.quantity - 1);
+        })
+        .catch((error) => {
+          console.error("Error updating cart item:", error);
+        });
     }
   };
+
   const checkout = () => {
     navigate("/Checkout");
   };
