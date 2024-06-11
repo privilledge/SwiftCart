@@ -108,9 +108,10 @@ function Products({ category, searchQuery }) {
   // Further filter products based on the search query
   const filteredProducts = filteredByCategory.filter(
     (product) =>
-      typeof searchQuery === "string" &&
-      typeof product.name === "string" &&
-      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      !searchQuery ||
+      (typeof searchQuery === "string" &&
+        typeof product.name === "string" &&
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
   // Check if item is already added in the cart

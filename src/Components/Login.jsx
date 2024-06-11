@@ -1,10 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import { useContext } from "react";
-import Products from "./Products";
-import { Col } from "react-bootstrap";
 import { Modal, Button } from "react-bootstrap";
 
 function Login() {
@@ -37,12 +35,10 @@ function Login() {
         body: formData.toString(),
       });
 
-      const result = await response.text();
-
-      if (result === "Login successful") {
+      if (response.ok) {
+        const token = await response.text();
         setLoginMessage("Login successful");
-        localStorage.setItem("token", result);
-        // alert(result);
+        localStorage.setItem("token", token);
         login();
         navigate("/cart");
       } else {
