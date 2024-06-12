@@ -37,10 +37,14 @@ function Login() {
 
       if (response.ok) {
         const token = await response.text();
-        setLoginMessage("Login successful");
-        localStorage.setItem("token", token);
-        login();
-        navigate("/cart");
+        if (token !== "Invalid username or password") {
+          setLoginMessage("Login successful");
+          localStorage.setItem("token", token);
+          login();
+          navigate("/cart");
+        } else {
+          setLoginMessage("Invalid username or password");
+        }
       } else {
         setLoginMessage("Invalid email or password");
       }
@@ -50,6 +54,7 @@ function Login() {
     }
     setShowModal(true);
   };
+
   const handleCloseModal = () => {
     setShowModal(false);
   };

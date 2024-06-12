@@ -3,8 +3,7 @@ import Home from "./Components/Home";
 import { CartProvider } from "./Components/CartContext.jsx";
 
 import Contact from "./Components/Contact.jsx";
-import Promo from "./Components/Promo";
-import Footer from "./Components/Footer";
+
 import SingleProduct from "./Components/SingleProduct.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./Components/Cart.jsx";

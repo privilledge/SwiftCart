@@ -24,7 +24,7 @@ function Products({ category, searchQuery }) {
       price: 17,
       oldPrice: 21,
       image: Image,
-      categories: ["accessories", "new"],
+      categories: ["accessories", "deals"],
     },
     {
       id: 2,
@@ -32,7 +32,7 @@ function Products({ category, searchQuery }) {
       price: 35,
       oldPrice: 38,
       image: Image6,
-      categories: ["women", "deals", "womenPromo"],
+      categories: ["women", "womenPromo", "new"],
     },
     {
       id: 3,
@@ -49,7 +49,7 @@ function Products({ category, searchQuery }) {
       price: 21,
       oldPrice: 24,
       image: Image2,
-      categories: ["accessories", "new"],
+      categories: ["accessories", "new", "deals"],
     },
     {
       id: 6,
@@ -57,7 +57,7 @@ function Products({ category, searchQuery }) {
       price: 45,
       oldPrice: 70,
       image: Image3,
-      categories: ["men", "deals", "new"],
+      categories: ["men", "new"],
     },
     {
       id: 7,
@@ -78,16 +78,16 @@ function Products({ category, searchQuery }) {
     {
       id: 9,
       name: "Sweatshirt",
-      price: 45,
-      oldPrice: 70,
+      price: 15,
+      oldPrice: 17,
       image: Image10,
       categories: ["men", "deals", "new"],
     },
     {
       id: 10,
       name: "Fluffy sweater",
-      price: 35,
-      oldPrice: 50,
+      price: 23,
+      oldPrice: 34,
       image: Image1,
       categories: ["women", "deals", "womenPromo"],
     },
