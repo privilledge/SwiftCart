@@ -5,7 +5,7 @@ import { CartProvider } from "./Components/CartContext.jsx";
 import Contact from "./Components/Contact.jsx";
 
 import SingleProduct from "./Components/SingleProduct.jsx";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Cart from "./Components/Cart.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Components/Login.jsx";
@@ -20,7 +20,7 @@ function App() {
     <div className="body">
       <AuthProvider>
         <CartProvider>
-          <BrowserRouter>
+          <HashRouter>
             <Routes>
               <Route path="/" element={<Home />} />
 
@@ -34,7 +34,7 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />
             </Routes>
-          </BrowserRouter>
+          </HashRouter>
         </CartProvider>
       </AuthProvider>
     </div>
