@@ -24,7 +24,7 @@ function App() {
             <Routes>
               <Route path="/SwiftCart" element={<Home />} />
 
-              <Route path="shop" element={<Shop />} />
+              <Route path="SwiftCart/shop" element={<Shop />} />
               <Route path="/" element={<PrivateRoute />}>
                 <Route path="checkout" element={<Checkout />} />
               </Route>
