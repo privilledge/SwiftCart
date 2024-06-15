@@ -138,11 +138,7 @@ function Cart() {
                 ))}
               </Row>
             )}
-            <NavLink
-              to="/SwiftCart/shop"
-              className="back-shop mb-4"
-              activeClassName="active"
-            >
+            <NavLink to="/SwiftCart/shop" className="back-shop mb-4">
               Back to shop
             </NavLink>
           </Col>

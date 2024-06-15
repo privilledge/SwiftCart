@@ -87,20 +87,12 @@ function Header({ onSearch, showSearch }) {
               )}
               <ul className="navbar-nav">
                 <li className="nav-item active">
-                  <NavLink
-                    to="/SwiftCart"
-                    className="nav-link"
-                    activeClassName="active"
-                  >
+                  <NavLink to="/SwiftCart" className="nav-link">
                     Home
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink
-                    to="/SwiftCart/shop"
-                    className="nav-link"
-                    activeClassName="active"
-                  >
+                  <NavLink to="/SwiftCart/shop" className="nav-link">
                     Shop
                   </NavLink>
                 </li>
@@ -113,11 +105,7 @@ function Header({ onSearch, showSearch }) {
                   </li>
                 ) : (
                   <li className="nav-item">
-                    <NavLink
-                      to="/SwiftCart/login"
-                      className="nav-link"
-                      activeClassName="active"
-                    >
+                    <NavLink to="/SwiftCart/login" className="nav-link">
                       Login
                     </NavLink>
                   </li>

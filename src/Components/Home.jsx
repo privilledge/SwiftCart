@@ -77,7 +77,7 @@ function Home({ searchQuery }) {
             {exclusives.map((exclusive) => (
               <div className="col-lg-6 box exclusive" key={exclusive.id}>
                 <div className="row offers">
-                  <div className="info col-lg-7 col-md-12 col-sm-12">
+                  <div className="info col-lg-7 col-md-7 col-sm-12">
                     <h6
                       className="fw-bold product-name"
                       onClick={() => handleProductClick(exclusive.id)}
@@ -115,10 +115,10 @@ function Home({ searchQuery }) {
         <div className="trends">
           <div className="container">
             <div className="row">
-              <div className="col-lg-5 ">
+              <div className="col-lg-5 col-md-12">
                 <img src={Trend} alt="" className="trend-image" />
               </div>
-              <div className="col-lg-7">
+              <div className="col-lg-7 py-3">
                 <span>Grab your 50% off</span>
                 <br />
                 <h2>Trends for Women </h2>
