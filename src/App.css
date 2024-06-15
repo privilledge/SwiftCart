@@ -54,6 +54,7 @@
   font-weight: 400 !important;
 }
 .boxes {
+  text-align: center;
   display: flex;
 }
 .boxes > .box {
@@ -62,8 +63,12 @@
 .boxes > .box:last-child {
   margin-right: 0px;
 }
-.box {
+.exclusive {
   border: 2px solid rgb(239, 238, 238);
+}
+.box {
+  /*  */
+
   border-radius: 8px;
   padding-bottom: 0.5em;
   text-align: center;
@@ -401,11 +406,7 @@ p {
 .checkout {
   margin-bottom: 2%;
 }
-@media (max-width: 768px) {
-  .cart-items-details {
-    border-right: none;
-  }
-}
+
 .remove-item-button {
   cursor: pointer;
   text-decoration: underline;

@@ -6,11 +6,8 @@ import Image4 from "../products/product_5.png";
 import Image5 from "../products/product_6.png";
 import Image6 from "../products/product_7.png";
 import Image7 from "../products/product_8.png";
-import Image8 from "../products/product_8.png";
-import Image9 from "../products/product_9.png";
 import Image10 from "../products/product_10.png";
-import Image11 from "../products/polo.jpg";
-import Image12 from "../products/tshirt1.jpg";
+import children from "../products/children.jpg";
 
 const products = [
   {
@@ -20,6 +17,7 @@ const products = [
     oldPrice: 21,
     image: Image,
     description: "Description for Brown fun bag.",
+    categories: ["accessories", "deals"],
   },
   {
     id: 2,
@@ -28,18 +26,20 @@ const products = [
     oldPrice: 38,
     image: Image6,
     description: "Description for Fleece Sweaters.",
+    categories: ["women", "womenPromo", "new"],
   },
   {
     id: 3,
-    name: "Women's Leather ",
+    name: "Women's Leather Wallet",
     price: 23,
     oldPrice: 27,
     image: Image7,
     description: "Description for Women's Leather Wallet.",
+    categories: ["women", "accessories", "deals", "womenPromo"],
   },
   {
     id: 4,
-    name: "Fleece Sweaters pul...",
+    name: "Fleece Sweaters pullover.",
     price: 45,
     oldPrice: 70,
     image: Image1,
@@ -47,60 +47,66 @@ const products = [
   },
   {
     id: 5,
-    name: "Basics duffel bag...",
+    name: "Basics duffel bag",
     price: 21,
     oldPrice: 24,
     image: Image2,
     description: "Description for Basics duffel bag.",
+    categories: ["accessories", "new", "deals"],
   },
   {
     id: 6,
-    name: "Men's Hoodie Cas...",
+    name: "Men's Hoodie Casual",
     price: 45,
     oldPrice: 70,
     image: Image3,
     description: "Description for Men's Hoodie.",
+    categories: ["men", "new"],
   },
   {
     id: 7,
-    name: "Sunglasses",
-    price: 45,
-    oldPrice: 70,
-    image: Image5,
-    description: "Description for Sunglasses.",
-  },
-  {
-    id: 8,
-    name: "Sweatshirt",
-    price: 21,
-    oldPrice: 24,
-    image: Image10,
-    description: "Description for Sweatshirt.",
-  },
-  {
-    id: 9,
-    name: "Women's wallet",
-    price: 45,
-    oldPrice: 70,
-    image: Image8,
-    description: "Description for Women's wallet.",
-  },
-  {
-    id: 10,
     name: "DECARSDZ Men's Oxfords",
     price: 21,
     oldPrice: 25,
     image: Image4,
     description: "Description for DECARSDZ Men's Oxfords.",
+    categories: ["men", "shoes", "new"],
   },
   {
-    id: 11,
-    name: "Men's Hoodie Casual.",
-    price: 32,
-    oldPrice: 35,
-    image: Image9,
-    description: "Description for Men's Hoodie Casual.",
+    id: 8,
+    name: "Sunglasses",
+    price: 21,
+    oldPrice: 27,
+    image: Image5,
+    description: "Description for Sunglasses.",
+    categories: ["accessories", "deals", "new"],
+  },
+  {
+    id: 9,
+    name: "Sweatshirt",
+    price: 15,
+    oldPrice: 17,
+    image: Image10,
+    description: "Description for Sweatshirt.",
+    categories: ["men", "deals", "new"],
+  },
+  {
+    id: 10,
+    name: "Fluffy sweater",
+    price: 23,
+    oldPrice: 34,
+    image: Image1,
+    description: "Description for Fluffy sweater.",
+    categories: ["women", "deals", "womenPromo"],
+  },
+  {
+    id: 16,
+    name: "Kids combo",
+    price: 87,
+    oldPrice: 99,
+    image: children,
+    description: "Description for Kids combo",
+    categories: ["children"],
   },
 ];
-
 export default products;

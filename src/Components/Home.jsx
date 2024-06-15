@@ -75,7 +75,7 @@ function Home({ searchQuery }) {
           <hr className="line-deco" />
           <div className="container boxes">
             {exclusives.map((exclusive) => (
-              <div className="col-lg-6 box" key={exclusive.id}>
+              <div className="col-lg-6 box exclusive" key={exclusive.id}>
                 <div className="row offers">
                   <div className="info col-lg-7 col-md-12 col-sm-12">
                     <h6

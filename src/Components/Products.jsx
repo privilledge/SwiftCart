@@ -100,6 +100,7 @@ function Products({ category, searchQuery }) {
       categories: ["children"],
     },
   ];
+
   // Filter products based on the category
   const filteredByCategory = category
     ? products.filter((product) => product.categories.includes(category))
