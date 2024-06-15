@@ -22,12 +22,12 @@ function App() {
         <CartProvider>
           <HashRouter>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/SwiftCart" element={<Home />} />
 
               <Route path="shop" element={<Shop />} />
-              <Route path="/" element={<PrivateRoute />}>
+              {/* <Route path="/" element={<PrivateRoute />}>
                 <Route path="checkout" element={<Checkout />} />
-              </Route>
+              </Route> */}
               <Route path="contact" element={<Contact />} />
               <Route path="cart" element={<Cart />} />
               <Route path="product/:id" element={<SingleProduct />}></Route>
