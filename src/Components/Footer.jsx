@@ -30,25 +30,25 @@ function Footer() {
                   <div className="col-6">
                     <h5>Quick Links</h5>
                     <p>
-                      <a style={{ color: "black" }} href="/shop">
+                      <a style={{ color: "black" }} href="/SwiftCart/shop">
                         Shop
                       </a>
                     </p>
                     <p>
                       {" "}
-                      <a style={{ color: "black" }} href="">
+                      <a style={{ color: "black" }} href="/SwiftCart/login">
                         Login
                       </a>
                     </p>
                     <p>
                       {" "}
-                      <a style={{ color: "black" }} href="/cart">
+                      <a style={{ color: "black" }} href="/SwiftCart/cart">
                         Cart
                       </a>
                     </p>
                     <p>
                       {" "}
-                      <a style={{ color: "black" }} href="/contact">
+                      <a style={{ color: "black" }} href="/SwiftCart/contact">
                         Contact
                       </a>
                     </p>

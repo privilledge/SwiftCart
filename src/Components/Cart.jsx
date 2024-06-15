@@ -2,7 +2,7 @@ import Header from "./Header";
 import React from "react";
 import { useCart } from "./CartContext";
 import { Row, Col, Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import { useContext } from "react";
 
@@ -61,7 +61,7 @@ function Cart() {
   };
 
   const checkout = () => {
-    navigate("/Checkout");
+    navigate("/SwiftCart/Checkout");
   };
 
   return (
@@ -138,9 +138,13 @@ function Cart() {
                 ))}
               </Row>
             )}
-            <a href="/shop" className="back-shop mb-4">
-              Back to Shop
-            </a>
+            <NavLink
+              to="/SwiftCart/shop"
+              className="back-shop mb-4"
+              activeClassName="active"
+            >
+              Back to shop
+            </NavLink>
           </Col>
           {cartItems.length === 0 ? (
             <p> </p>
@@ -176,7 +180,7 @@ function Cart() {
                 <Button
                   className="login-checkout"
                   variant="dark"
-                  onClick={() => navigate("/login")}
+                  onClick={() => navigate("/SwiftCart/login")}
                 >
                   Log in to checkout
                 </Button>

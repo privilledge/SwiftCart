@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { AuthContext } from "./AuthContext";
 import { useContext } from "react";
@@ -20,13 +20,13 @@ function Header({ onSearch, showSearch }) {
   };
 
   const handleCartClick = () => {
-    navigate("/cart");
+    navigate("/SwiftCart/cart");
   };
   const handleLogoutClick = () => {
     const confirmLogout = window.confirm("Are you sure you want to log out?");
     if (confirmLogout) {
       logout();
-      navigate("/");
+      navigate("/SwiftCart");
     }
   };
   return (
@@ -87,14 +87,22 @@ function Header({ onSearch, showSearch }) {
               )}
               <ul className="navbar-nav">
                 <li className="nav-item active">
-                  <a href="/" className="nav-link active">
+                  <NavLink
+                    to="/SwiftCart"
+                    className="nav-link"
+                    activeClassName="active"
+                  >
                     Home
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/shop">
+                  <NavLink
+                    to="/SwiftCart/shop"
+                    className="nav-link"
+                    activeClassName="active"
+                  >
                     Shop
-                  </a>
+                  </NavLink>
                 </li>
 
                 {isAuthenticated ? (
@@ -105,9 +113,13 @@ function Header({ onSearch, showSearch }) {
                   </li>
                 ) : (
                   <li className="nav-item">
-                    <a className="nav-link" href="/login">
+                    <NavLink
+                      to="/SwiftCart/login"
+                      className="nav-link"
+                      activeClassName="active"
+                    >
                       Login
-                    </a>
+                    </NavLink>
                   </li>
                 )}
               </ul>

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const MyCarousel = () => {
   const navigate = useNavigate();
   const clickShopButton = () => {
-    navigate("/Shop");
+    navigate("/SwiftCart/Shop");
   };
   return (
     <>

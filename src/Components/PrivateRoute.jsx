@@ -13,7 +13,7 @@ const PrivateRoute = () => {
     if (!isAuthenticated && !alertShown.current) {
       alertShown.current = true;
       alert("You need to be logged in first!");
-      navigate("/login");
+      navigate("/SwiftCart/login");
     }
   }, [isAuthenticated, navigate]);
 

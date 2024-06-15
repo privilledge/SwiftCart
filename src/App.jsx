@@ -5,7 +5,7 @@ import { CartProvider } from "./Components/CartContext.jsx";
 import Contact from "./Components/Contact.jsx";
 
 import SingleProduct from "./Components/SingleProduct.jsx";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./Components/Cart.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Components/Login.jsx";
@@ -20,21 +20,24 @@ function App() {
     <div className="body">
       <AuthProvider>
         <CartProvider>
-          <HashRouter>
+          <BrowserRouter>
             <Routes>
               <Route path="/SwiftCart" element={<Home />} />
 
-              <Route path="shop" element={<Shop />} />
-              {/* <Route path="/" element={<PrivateRoute />}>
-                <Route path="checkout" element={<Checkout />} />
-              </Route> */}
-              <Route path="contact" element={<Contact />} />
-              <Route path="cart" element={<Cart />} />
-              <Route path="product/:id" element={<SingleProduct />}></Route>
-              <Route path="login" element={<Login />} />
-              <Route path="signup" element={<Signup />} />
+              <Route path="SwiftCart/shop" element={<Shop />} />
+              <Route path="/" element={<PrivateRoute />}>
+                <Route path="SwiftCart/checkout" element={<Checkout />} />
+              </Route>
+              <Route path="/SwiftCart/contact" element={<Contact />} />
+              <Route path="/SwiftCart/cart" element={<Cart />} />
+              <Route
+                path="/SwiftCart/product/:id"
+                element={<SingleProduct />}
+              ></Route>
+              <Route path="/SwiftCart/login" element={<Login />} />
+              <Route path="/SwiftCart/signup" element={<Signup />} />
             </Routes>
-          </HashRouter>
+          </BrowserRouter>
         </CartProvider>
       </AuthProvider>
     </div>

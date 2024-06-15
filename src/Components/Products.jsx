@@ -120,7 +120,7 @@ function Products({ category, searchQuery }) {
     return cartItems.some((item) => item.id === productId);
   };
   const handleProductClick = (id) => {
-    navigate(`/product/${id}`);
+    navigate(`/SwiftCart/product/${id}`);
   };
 
   return (

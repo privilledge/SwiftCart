@@ -45,7 +45,7 @@ function Home({ searchQuery }) {
   ];
 
   const handleProductClick = (id) => {
-    navigate(`/product/${id}`);
+    navigate(`/SwiftCart/product/${id}`);
   };
 
   return (

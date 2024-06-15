@@ -41,7 +41,7 @@ function Login() {
           setLoginMessage("Login successful");
           localStorage.setItem("token", token);
           login();
-          navigate("/cart");
+          navigate("/SwiftCart/cart");
         } else {
           setLoginMessage("Invalid username or password");
         }
@@ -96,7 +96,7 @@ function Login() {
           <br />
           <br />
           <span>
-            Dont have an account? <a href="/signup">Sign up</a>
+            Dont have an account? <a href="/SwiftCart/signup">Sign up</a>
           </span>
           <br />
         </form>

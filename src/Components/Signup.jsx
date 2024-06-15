@@ -44,7 +44,7 @@ function Signup() {
       console.error("Error:", error);
       alert("Failed to sign up");
     }
-    navigate("/cart");
+    navigate("/SwiftCart/cart");
   };
 
   return (

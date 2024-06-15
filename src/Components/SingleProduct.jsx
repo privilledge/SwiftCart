@@ -45,7 +45,7 @@ function SingleProduct() {
             <br />
             <button
               className="button back-button"
-              onClick={() => navigate("/shop")}
+              onClick={() => navigate("/SwiftCart/shop")}
             >
               Back to shop
             </button>
