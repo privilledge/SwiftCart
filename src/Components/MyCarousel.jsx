@@ -1,13 +1,12 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Carousel } from "react-bootstrap";
-import heroImage from "../assets/banner.jpg";
+
 import { useNavigate } from "react-router-dom";
 
 const MyCarousel = () => {
   const navigate = useNavigate();
   const clickShopButton = () => {
-    navigate("/Shop");
+    navigate("/SwiftCart/Shop");
   };
   return (
     <>
