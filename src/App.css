@@ -546,7 +546,7 @@ p {
 }
 .signup {
   border: solid #c9c7c7 1px;
-  width: 60% !important;
+  width: 60%;
   padding: 2%;
   position: absolute;
 
@@ -558,13 +558,16 @@ p {
 }
 @media (max-width: 768px) {
   .login {
-    width: auto !important;
+    width: 90% !important;
   }
   .login input {
     width: auto;
   }
   .login button {
     width: auto;
+  }
+  .signup {
+    width: 90%;
   }
 }
 .signup .header {
