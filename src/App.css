@@ -142,8 +142,9 @@ s {
   }
   .wrap {
     background-image: url("assets/banner.jpg");
-    background-size: 40em;
+    background-size: 50em;
     background-repeat: no-repeat;
+    background-position: center;
   }
   .wrap .container {
     margin-left: 2%;
