@@ -3,6 +3,7 @@ import facebook from "../assets/icons/facebook.png";
 import instagram from "../assets/icons/instagram.png";
 import pinterest from "../assets/icons/pinterest.png";
 import twitter from "../assets/icons/twitter.png";
+import { NavLink } from "react-router-dom";
 function Footer() {
   return (
     <>
@@ -30,27 +31,27 @@ function Footer() {
                   <div className="col-6">
                     <h5>Quick Links</h5>
                     <p>
-                      <a style={{ color: "black" }} href="/SwiftCart/shop">
+                      <NavLink to="/SwiftCart/shop" style={{ color: "black" }}>
                         Shop
-                      </a>
+                      </NavLink>
                     </p>
                     <p>
-                      {" "}
-                      <a style={{ color: "black" }} href="/SwiftCart/login">
+                      <NavLink to="/SwiftCart/login" style={{ color: "black" }}>
                         Login
-                      </a>
+                      </NavLink>
                     </p>
                     <p>
-                      {" "}
-                      <a style={{ color: "black" }} href="/SwiftCart/cart">
+                      <NavLink to="/SwiftCart/cart" style={{ color: "black" }}>
                         Cart
-                      </a>
+                      </NavLink>
                     </p>
                     <p>
-                      {" "}
-                      <a style={{ color: "black" }} href="/SwiftCart/contact">
+                      <NavLink
+                        to="/SwiftCart/contact"
+                        style={{ color: "black" }}
+                      >
                         Contact
-                      </a>
+                      </NavLink>
                     </p>
                   </div>
                 </div>

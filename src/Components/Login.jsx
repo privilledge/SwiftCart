@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import { useContext } from "react";
 import { Modal, Button } from "react-bootstrap";
@@ -96,7 +96,10 @@ function Login() {
           <br />
           <br />
           <span>
-            Dont have an account? <a href="/SwiftCart/signup">Sign up</a>
+            Dont have an account?{" "}
+            <NavLink to="/SwiftCart/signup" style={{ color: "blue" }}>
+              Sign up
+            </NavLink>
           </span>
           <br />
         </form>
