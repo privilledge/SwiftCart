@@ -125,7 +125,7 @@ function Products({ category, searchQuery }) {
 
   return (
     <>
-      <div className="container ">
+      <div className=" ">
         <div className="row">
           {filteredProducts.map((product) => (
             <div
