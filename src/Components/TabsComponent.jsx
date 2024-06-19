@@ -26,9 +26,9 @@ const TabsComponent = ({ searchQuery }) => {
       <Tab eventKey="children" title="Children">
         <Products category={"children"} searchQuery={searchQuery} />
       </Tab>
-      <Tab eventKey="accessories" title="Accessories">
+      {/* <Tab eventKey="accessories" title="Accessories">
         <Products category={"accessories"} searchQuery={searchQuery} />
-      </Tab>
+      </Tab> */}
       <Tab eventKey="shoes" title="Shoes">
         <Products category={"shoes"} searchQuery={searchQuery} />
       </Tab>

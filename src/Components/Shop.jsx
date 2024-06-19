@@ -19,7 +19,9 @@ function Shop() {
       <br />
 
       <div className="container shop-container">
+        <div className="row"></div>
         <TabsComponent searchQuery={searchQuery} />
+
         <PillsComponent />
       </div>
 
