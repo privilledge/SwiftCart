@@ -36,16 +36,16 @@ function Products({ category, searchQuery }) {
     },
     {
       id: 3,
-      name: "Women's Leather Wallet",
+      name: "Leather Wallet",
       price: 23,
       oldPrice: 27,
       image: Image7,
-      categories: ["women", "accessories", "deals", "womenPromo"],
+      categories: ["women", "accessories", "womenPromo", "new"],
     },
 
     {
       id: 5,
-      name: "Basics duffel bag",
+      name: "Duffel bag",
       price: 21,
       oldPrice: 24,
       image: Image2,
@@ -53,7 +53,7 @@ function Products({ category, searchQuery }) {
     },
     {
       id: 6,
-      name: "Men's Hoodie Casual",
+      name: "Hoodie Casual",
       price: 45,
       oldPrice: 70,
       image: Image3,
@@ -61,7 +61,7 @@ function Products({ category, searchQuery }) {
     },
     {
       id: 7,
-      name: "DECARSDZ MEN'S OXFORDS",
+      name: "Men's oxfords",
       price: 45,
       oldPrice: 70,
       image: Image4,
@@ -73,7 +73,7 @@ function Products({ category, searchQuery }) {
       price: 21,
       oldPrice: 24,
       image: Image5,
-      categories: ["accessories", "deals", "new"],
+      categories: ["accessories", "deals", "womenPromo", "new"],
     },
     {
       id: 9,
@@ -89,7 +89,7 @@ function Products({ category, searchQuery }) {
       price: 23,
       oldPrice: 34,
       image: Image1,
-      categories: ["women", "deals", "womenPromo"],
+      categories: ["women", "womenPromo", "new"],
     },
     {
       id: 16,
@@ -125,8 +125,49 @@ function Products({ category, searchQuery }) {
 
   return (
     <>
-      <div className=" ">
-        <div className="row">
+      <div className="container">
+        <div className="row ">
+          {filteredProducts.map((product) => (
+            <div
+              className="col-lg-3 col-md-6 col-sm-12 mb-2 product"
+              key={product.id}
+            >
+              <div className="card ">
+                <div className="card-body">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    style={{ width: "90%" }}
+                  />
+                  <div className="bottom row">
+                    <div className="info col-9">
+                      <h6
+                        className="product-name"
+                        onClick={() => handleProductClick(product.id)}
+                      >
+                        {product.name}
+                      </h6>
+                      <h6 className="price">
+                        ${product.price} <s>${product.oldPrice}</s>
+                      </h6>
+                    </div>
+                    <div className="col-3">
+                      {" "}
+                      {isProductInCart(product.id) ? (
+                        <RemoveButton
+                          onClick={() => removeFromCart(product.id)}
+                        />
+                      ) : (
+                        <AddButton onClick={() => addToCart(product)} />
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* <div className="row">
           {filteredProducts.map((product) => (
             <div
               className="col-lg-4 col-md-6 col-sm-12 box mb-3 mr-auto"
@@ -153,7 +194,7 @@ function Products({ category, searchQuery }) {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
       <br></br>
     </>

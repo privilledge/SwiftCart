@@ -115,10 +115,10 @@ function Home({ searchQuery }) {
         <div className="trends">
           <div className="container">
             <div className="row">
-              <div className="col-lg-5 col-md-12">
+              <div className="col-lg-4 col-md-12">
                 <img src={Trend} alt="" className="trend-image" />
               </div>
-              <div className="col-lg-7 py-3">
+              <div className="col-lg-8 py-3">
                 <span>Grab your 50% off</span>
                 <br />
                 <h2>Trends for Women </h2>
