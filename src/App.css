@@ -16,9 +16,10 @@
   margin-right: 5%;
 }
 .navbar-brand {
-  font-size: large !important;
+  font-size: x-large !important;
   font-weight: 700;
   text-transform: uppercase;
+  color: #1dcda4 !important;
 }
 .wrap {
   background-image: url("assets/bannerAgain.jpg");
