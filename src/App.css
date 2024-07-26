@@ -1,5 +1,5 @@
 .body {
-  background-color: #fdfdff !important;
+  background-color: #fdfdfd !important;
 }
 .sticky-top {
   position: -webkit-sticky;
@@ -21,36 +21,19 @@
   text-transform: uppercase;
 }
 .wrap {
-  background-image: url("assets/banner3.jpg");
+  background-image: url("assets/bannerAgain.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top !important;
 }
 .carousel-item .container {
   padding-top: 0% !important;
-  margin-top: 0% !important;
+  margin-top: 3% !important;
   margin-left: 10%;
   height: 625px;
 }
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: #038466;
-  border-radius: 50%;
-  height: 1.2rem !important;
-  width: 1.2rem !important;
-  font-weight: 800;
-}
-/* .carousel-item {
-  height: 100vh;
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.carousel-caption {
-  bottom: 50px;
-} */
-.search {
+*/ .search {
   width: 18em !important;
 }
 .intro {
@@ -132,7 +115,7 @@ s {
 }
 .card {
   width: auto;
-  border: 1px solid #fffafa !important;
+  border: 1px solid rgb(245, 245, 245) !important;
   background-color: #ffffff !important;
 }
 .product .card {
@@ -176,7 +159,7 @@ s {
     border-right: 0;
   }
   .wrap {
-    background-image: url("assets/banner.jpg");
+    background-image: none;
     background-size: 45em;
     background-repeat: no-repeat;
     background-position: center;
@@ -291,15 +274,7 @@ s {
 .links ul {
   padding: 1em;
 }
-.carouse {
-  height: 13em;
-  background-color: #dcdcdc;
-  color: #1d1c1c;
-}
-.carouse h3 {
-  padding-top: 6%;
-  padding-left: 45%;
-}
+
 p {
   font-size: 14px !important;
 }
