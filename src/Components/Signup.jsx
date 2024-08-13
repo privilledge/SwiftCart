@@ -52,7 +52,7 @@ function Signup() {
       <Header />
       <br />
       <div className="container ">
-        <form className="signup" onSubmit={handleSubmit}>
+        <form className="signup mt-5" onSubmit={handleSubmit}>
           <div className="header">
             <h2>Sign up</h2>
           </div>
@@ -83,81 +83,7 @@ function Signup() {
               </Col>
             </Row>
             <br />
-            <label htmlFor="country">Select country</label>
             <br />
-            <select
-              className="select-country"
-              name="country"
-              value={formData.country}
-              onChange={handleChange}
-              id=""
-            >
-              <option value="">Select country</option>
-              <option value="">Zimbabwe</option>
-            </select>
-            <br />
-            <br />
-            <label htmlFor="last-name">Street address</label>
-            <br />
-            <input
-              className="billing-input"
-              type="text"
-              placeholder="House number and street name"
-              name="streetAddress"
-              value={formData.streetAddress}
-              onChange={handleChange}
-              required
-            />
-            <br />
-            <br />
-            <input
-              className="billing-input"
-              type="text"
-              placeholder="Apartment,suite,unit etc"
-              name="apartment"
-              value={formData.apartment}
-              onChange={handleChange}
-              required
-            />
-            <br />
-            <br />
-
-            <input
-              className="billing-input"
-              type="text"
-              placeholder="Town/City"
-              name="city"
-              value={formData.city}
-              onChange={handleChange}
-            />
-
-            <br />
-            <br />
-
-            <input
-              className="billing-input"
-              type="text"
-              placeholder="Zip code"
-              name="zipCode"
-              value={formData.zipCode}
-              onChange={handleChange}
-              required
-            />
-            <br />
-            <br />
-
-            <input
-              className="billing-input"
-              type="text"
-              placeholder="Phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-            />
-            <br />
-            <br />
-
             <input
               className="billing-input"
               type="email"

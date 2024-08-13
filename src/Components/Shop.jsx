@@ -15,7 +15,7 @@ function Shop() {
   return (
     <>
       <Header showSearch={true} onSearch={handleSearch} />
-
+      <div className="carousel"></div>
       <br />
 
       <div className="container shop-container">
